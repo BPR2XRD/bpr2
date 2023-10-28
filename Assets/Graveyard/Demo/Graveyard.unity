@@ -33961,6 +33961,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 520410749054589364, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2002573553595579251, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
       propertyPath: m_Name
       value: Complete XR Origin Set Up
@@ -34003,6 +34007,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6326446829924762252, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363198332522784526, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6474089427982183291, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658155319493895058, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 7028806889179478337, guid: 662710c199cc51a4fb273ba6433c127a, type: 3}
+    - target: {fileID: 9030563349361136597, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
