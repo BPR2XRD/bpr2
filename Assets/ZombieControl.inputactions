@@ -1,14 +1,14 @@
 {
-    "name": "ControllerInput",
+    "name": "ZombieControl",
     "maps": [
         {
-            "name": "ZombieControls",
-            "id": "ee9e5ac4-798d-45f9-957f-997de7255f2a",
+            "name": "ZombieMovement",
+            "id": "1682bbd8-5862-4400-9a6f-adf77fb529a2",
             "actions": [
                 {
                     "name": "Movement",
                     "type": "PassThrough",
-                    "id": "61f8d9b1-9360-424e-a248-0cff09dd332a",
+                    "id": "85163f74-da4d-48c5-95a9-6c21c7c52ae1",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -17,7 +17,16 @@
                 {
                     "name": "Run",
                     "type": "Button",
-                    "id": "54a0e16f-3d11-4410-adc2-3e2986bb598a",
+                    "id": "6031183d-c1b1-4f1d-a1b5-b99af7df618a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "8379dc7c-2d35-4e2e-ac5c-c963bac22207",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -27,10 +36,10 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "3b15430b-f4c3-4c88-9179-2e04cbe2640d",
+                    "id": "296ffc22-21c4-4524-b593-fa1d107913cd",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "StickDeadzone",
+                    "processors": "",
                     "groups": "",
                     "action": "Movement",
                     "isComposite": false,
@@ -38,9 +47,20 @@
                 },
                 {
                     "name": "",
-                    "id": "bcf9c417-067f-41c0-a8bb-e60e5a26b0e8",
+                    "id": "af18cbe2-2e37-4441-9081-df095f55224a",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cdb55c5d-35bc-405f-810c-828d529f4c61",
                     "path": "<Gamepad>/leftShoulder",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "Hold(pressPoint=0.1)",
                     "processors": "",
                     "groups": "",
                     "action": "Run",
