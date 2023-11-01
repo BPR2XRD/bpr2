@@ -34041,6 +34041,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8792433514426216871, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
+      propertyPath: m_EnableFly
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792433514426216871, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
+      propertyPath: m_MoveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9030563349361136597, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -47827,7 +47835,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3842890966437725910, guid: 3739b8a9f7d393040afe8170d0aec4e7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

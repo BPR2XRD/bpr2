@@ -4,6 +4,8 @@ using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
+using UnityEngine.XR.OpenXR.Input;
 
 public class GunShoot : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class GunShoot : MonoBehaviour
 
     [Header("Inputs")]
     [Tooltip("Specify trigger button")][SerializeField] InputActionReference triger;
+    [Tooltip("Specify controller haptics")][SerializeField] InputActionReference haptics;
 
     [Header("Gun stats")]
     public float damage = 10f;
@@ -65,7 +68,9 @@ public class GunShoot : MonoBehaviour
             {
                 //nextTimeToFire = Time.time + 1f / fireRate;
                 gunAnimator.SetTrigger("Fire");
-                Debug.Log("Trigger button is pressed");
+                //OpenXRInput.SendHapticImpulse(haptics, 1f, 4f, XRController.rightHand); //Right Hand Haptic Impulse, not working, found alternative
+                if (ctx.control.device is XRController device)
+                    Rumble(device);//vibrate
             }
             else audioSource.PlayOneShot(gunNoAmmoSound);
         };
@@ -87,6 +92,14 @@ public class GunShoot : MonoBehaviour
         //    nextTimeToFire = Time.time + 1f / fireRate;
         //    Shoot();
         //}
+    }
+
+    private void Rumble(InputDevice device)
+    {
+        //2-thumb area?, 1- trigger, 0 - whole body
+        var channel = 1;
+        var command = UnityEngine.InputSystem.XR.Haptics.SendHapticImpulseCommand.Create(channel, 1f, 0.1f);
+        device.ExecuteCommand(ref command);
     }
 
     void Reload()
