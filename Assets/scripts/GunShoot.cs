@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -29,7 +30,7 @@ public class GunShoot : MonoBehaviour
     public float range = 100f;
     public float fireRate = 2f;
     public float impactForce = 6f;
-    public int maxAmmo = 12;
+    public int maxAmmo = 12; 
     [Range(1.0f, 5.0f)]
     [Tooltip("Changes how fast the gun fires")]public float animFireSpeed = 1f;
 
@@ -41,6 +42,10 @@ public class GunShoot : MonoBehaviour
 
     [Header("Visual effects")]
     [Tooltip("Used for bullet holes and stuff")] public HitEffect hitEffect;
+
+    [Header("Ammo indicator")]
+    public TextMeshPro ammoText;
+
 
     private float nextTimeToFire = 0f;
     private int currentAmmo;
@@ -87,6 +92,7 @@ public class GunShoot : MonoBehaviour
     void Reload()
     {
         currentAmmo = maxAmmo;
+        ammoText.SetText(currentAmmo.ToString()); //Change ammo indicator
         audioSource.PlayOneShot(gunReloadSound);
     }
 
@@ -95,6 +101,7 @@ public class GunShoot : MonoBehaviour
     {
         audioSource.PlayOneShot(gunFireSound);
         currentAmmo--;
+        ammoText.SetText(currentAmmo.ToString()); //Change ammo indicator
 
         if (muzzleFlashPrefab)
         {
