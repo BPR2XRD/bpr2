@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class GunShoot : MonoBehaviour
 {
     [Header("Prefab Refrences")]
-    public GameObject bulletPrefab;
+    //public GameObject bulletPrefab;
     public GameObject casingPrefab;
     public GameObject muzzleFlashPrefab;
 
@@ -23,25 +23,32 @@ public class GunShoot : MonoBehaviour
     [Header("Inputs")]
     [Tooltip("Specify trigger button")][SerializeField] InputActionReference triger;
 
+    [Header("Gun stats")]
     public float damage = 10f;
-      public float headDamage = 35f;
-      public float range = 100f;
+    public float headDamage = 35f;
+    public float range = 100f;
     public float fireRate = 2f;
     public float impactForce = 6f;
+    public int maxAmmo = 12;
+    [Range(1.0f, 5.0f)]
+    [Tooltip("Changes how fast the gun fires")]public float animFireSpeed = 1f;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip gunFireSound;
+    public AudioClip gunReloadSound;
+    public AudioClip gunNoAmmoSound;
+
+    [Header("Visual effects")]
+    [Tooltip("Used for bullet holes and stuff")] public HitEffect hitEffect;
 
     private float nextTimeToFire = 0f;
-    private AudioSource gunFireSound;
-
-    public Camera mainCamera;
-    public ParticleSystem muzzleFlash;
-
-    public HitEffect hitEffect;
-
-
+    private int currentAmmo;
 
     private void Start()
     {
-        gunFireSound = GetComponent<AudioSource>();
+        gunAnimator.speed = animFireSpeed;
+        Reload();
     }
 
     // Update is called once per frame
@@ -49,13 +56,18 @@ public class GunShoot : MonoBehaviour
     {
         triger.action.started += ctx =>
         {
-            if (Time.time >= nextTimeToFire)
+            if (currentAmmo > 0)
             {
-                nextTimeToFire = Time.time + 1f / fireRate;
+                //nextTimeToFire = Time.time + 1f / fireRate;
                 gunAnimator.SetTrigger("Fire");
                 Debug.Log("Trigger button is pressed");
             }
+            else audioSource.PlayOneShot(gunNoAmmoSound);
         };
+
+        //Turn the gun to reload
+        if (Vector3.Angle(transform.up, Vector3.up) > 100 && currentAmmo < maxAmmo)
+            Reload();
 
         //if (triger.action.IsPressed() && Time.time >= nextTimeToFire) 
         //{
@@ -72,10 +84,17 @@ public class GunShoot : MonoBehaviour
         //}
     }
 
+    void Reload()
+    {
+        currentAmmo = maxAmmo;
+        audioSource.PlayOneShot(gunReloadSound);
+    }
+
+    //Note: method is called inside the animation, using an Animation event
     void Shoot()
     {
-        //if (!muzzleFlash.isPlaying) muzzleFlash.Play();
-        //gunFireSound.PlayOneShot(gunFireSound.clip);
+        audioSource.PlayOneShot(gunFireSound);
+        currentAmmo--;
 
         if (muzzleFlashPrefab)
         {
@@ -86,8 +105,7 @@ public class GunShoot : MonoBehaviour
             //Destroy the muzzle flash effect
             Destroy(tempFlash, destroyTimer);
         }
-        RaycastHit hit;
-        if (Physics.Raycast(barrelLocation.position, barrelLocation.transform.forward, out hit, range))
+        if (Physics.Raycast(barrelLocation.position, barrelLocation.transform.forward, out RaycastHit hit, range))
         {
             Debug.Log(hit.transform.name);
             if (hit.transform.CompareTag("Player")) return;
@@ -104,7 +122,7 @@ public class GunShoot : MonoBehaviour
                 }
                 hitEffect.ShowHitEffect(hit, HitEffect.Effects.Impact, 1f);
             }
-            else if(hit.transform.TryGetComponent<HitBox>(out var hitBox))
+            else if (hit.transform.TryGetComponent<HitBox>(out var hitBox))
             {
                 if (hit.collider.CompareTag("head")) // for extra damage
                 {
@@ -137,13 +155,24 @@ public class GunShoot : MonoBehaviour
         GameObject tempCasing;
         tempCasing = Instantiate(casingPrefab, casingExitLocation.position, casingExitLocation.rotation) as GameObject;
         //Add force on casing to push it out
-        tempCasing.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(ejectPower * 0.7f, ejectPower), (casingExitLocation.position - casingExitLocation.right * 0.3f - casingExitLocation.up * 0.6f), 1f);
+        tempCasing.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(ejectPower * 0.7f, ejectPower), casingExitLocation.position - casingExitLocation.right * 0.3f - casingExitLocation.up * 0.6f, 1f);
         //Add torque to make casing spin in random direction
         tempCasing.GetComponent<Rigidbody>().AddTorque(new Vector3(0, Random.Range(100f, 500f), Random.Range(100f, 1000f)), ForceMode.Impulse);
 
         //Destroy casing after X seconds
         Destroy(tempCasing, destroyTimer);
     }
+
+    //void OnGUI()
+    //{
+    //    //Create a Label in Game view for the Slider
+    //    GUI.Label(new Rect(0, 25, 40, 60), "Speed");
+    //    //Create a horizontal Slider to control the speed of the Animator. Drag the slider to 1 for normal speed.
+
+    //    animationSpeed = GUI.HorizontalSlider(new Rect(45, 25, 200, 60), animationSpeed, 0.0F, 3.0F);
+    //    //Make the speed of the Animator match the Slider value
+    //    gunAnimator.speed = animationSpeed;
+    //}
 
 
 
