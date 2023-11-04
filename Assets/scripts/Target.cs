@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public float health = 50f;
+    public int health = 5;
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(int amount)
     {
-        health-=amount;
+        health -= amount;
         if (health <= 0f) {
             Destroy(gameObject);
         }

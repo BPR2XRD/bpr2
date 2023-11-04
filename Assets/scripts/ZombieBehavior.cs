@@ -101,7 +101,10 @@ public class ZombieBehavior : MonoBehaviour
         }
     }
     void Scream(){
-        source2.PlayOneShot(audioClipScream);
+        if (!source2.isPlaying)
+        {
+            source2.PlayOneShot(audioClipScream);
+        }
     }
 
     IEnumerator InitialiseAttack()

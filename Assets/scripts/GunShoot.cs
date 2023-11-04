@@ -28,8 +28,8 @@ public class GunShoot : MonoBehaviour
     [Tooltip("Specify controller haptics")][SerializeField] InputActionReference haptics;
 
     [Header("Gun stats")]
-    public float damage = 10f;
-    public float headDamage = 35f;
+    public int damage = 1;
+    public int headDamage = 5;
     public float range = 100f;
     public float fireRate = 2f;
     public float impactForce = 6f;

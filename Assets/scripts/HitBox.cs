@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class HitBox : MonoBehaviour
 {
-    public Health health;
+    public HealthZombie health;
    
-    public void OnBulletHit(float damage)
+    public void OnBulletHit(int damage)
     {
         health.TakeDamage(damage);
     }
