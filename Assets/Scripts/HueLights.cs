@@ -59,7 +59,7 @@ public class HueLights : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RegisterAppWithHueBridge();
+        //RegisterAppWithHueBridge();
     }
 
     // Update is called once per frame
@@ -73,6 +73,10 @@ public class HueLights : MonoBehaviour
         IBridgeLocator locator = new HttpBridgeLocator();
         var timeout = TimeSpan.FromSeconds(5);
         var bridges = await locator.LocateBridgesAsync(timeout);
+
+        //_client = new LocalHueClient(BRIDGE_IP);
+        //_client.Initialize(APP_ID);
+        Debug.Log("after client");
 
         // Assuming we have only one bridge
         var bridge = bridges.First();
