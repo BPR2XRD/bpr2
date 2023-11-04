@@ -27,7 +27,7 @@ public class CoffinController : MonoBehaviour
         yield return new WaitUntil(() => Mathf.Approximately(GetComponent<Rigidbody>().velocity.sqrMagnitude, 0));
 
         // Get the y position of the coffin as it settles
-        float settledYPosition = transform.position.y - 3.4f;
+        float settledYPosition = transform.position.y - 5.3f;
 
         // Trigger the animation to open the coffin door
         animator.SetTrigger("OpenCoffinDoor");
