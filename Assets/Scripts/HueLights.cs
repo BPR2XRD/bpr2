@@ -3,6 +3,7 @@ using Q42.HueApi.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEditor.PackageManager;
 using UnityEngine;
@@ -13,7 +14,8 @@ public class HueLights : MonoBehaviour
     private const string BRIDGE_IP = "192.168.126.44";
     private const string APP_ID = "7556163a989040aa9d5763cbfefef5bf";
     private const string APP_ID2 = "7556163a-9890-40aa-9d57-63cbfefef5bf";
-
+    [SerializeField]
+    HueSettings hueSettings;
     ILocalHueClient _client;
     Light _light;
     List<string> _lightList;
@@ -57,7 +59,7 @@ public class HueLights : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitializeHue();
+        RegisterAppWithHueBridge();
     }
 
     // Update is called once per frame
@@ -65,16 +67,25 @@ public class HueLights : MonoBehaviour
     {
 
     }
-
-    public async Task ConnectLights()
+    public async Task RegisterAppWithHueBridge()
     {
+        Debug.Log("Regster hue");
+        IBridgeLocator locator = new HttpBridgeLocator();
+        var timeout = TimeSpan.FromSeconds(5);
+        var bridges = await locator.LocateBridgesAsync(timeout);
 
-        //Make sure the user has preSssed the button on the bridge before calling RegisterAsync
-        ////It will throw an LinkButtonNotPressedException if the user did not press the button
-        //var regResult = await LocalHueClient.RegisterAsync("BRIDGE_IP", "mypersonalappname");
+        // Assuming we have only one bridge
+        var bridge = bridges.First();
+        string ipAddressOfTheBridge = bridge.IpAddress;
+        var client = new LocalHueClient(ipAddressOfTheBridge);
+        Debug.Log("after client");
 
-        ////Save the app key for later use and use it to initialize LocalHueApi
-        //var appKey = regResult.Username;
-
+        // Get the key
+        var appKey = await client.RegisterAsync(
+            hueSettings.AppName,
+            hueSettings.DeviceName);
+        Debug.Log(appKey);
+        hueSettings.AppKey = appKey;
     }
+
 }
