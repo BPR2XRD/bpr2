@@ -53,6 +53,15 @@ public partial class @ZombieControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Scream"",
+                    ""type"": ""Button"",
+                    ""id"": ""93322ed3-1476-460d-a8c6-2fe812c8dbf6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -88,6 +97,17 @@ public partial class @ZombieControl: IInputActionCollection2, IDisposable
                     ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4a64c9d-80bd-42a0-b402-72c67108705f"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scream"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -99,6 +119,7 @@ public partial class @ZombieControl: IInputActionCollection2, IDisposable
         m_ZombieMovement_Movement = m_ZombieMovement.FindAction("Movement", throwIfNotFound: true);
         m_ZombieMovement_Run = m_ZombieMovement.FindAction("Run", throwIfNotFound: true);
         m_ZombieMovement_Attack = m_ZombieMovement.FindAction("Attack", throwIfNotFound: true);
+        m_ZombieMovement_Scream = m_ZombieMovement.FindAction("Scream", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -163,6 +184,7 @@ public partial class @ZombieControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_ZombieMovement_Movement;
     private readonly InputAction m_ZombieMovement_Run;
     private readonly InputAction m_ZombieMovement_Attack;
+    private readonly InputAction m_ZombieMovement_Scream;
     public struct ZombieMovementActions
     {
         private @ZombieControl m_Wrapper;
@@ -170,6 +192,7 @@ public partial class @ZombieControl: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_ZombieMovement_Movement;
         public InputAction @Run => m_Wrapper.m_ZombieMovement_Run;
         public InputAction @Attack => m_Wrapper.m_ZombieMovement_Attack;
+        public InputAction @Scream => m_Wrapper.m_ZombieMovement_Scream;
         public InputActionMap Get() { return m_Wrapper.m_ZombieMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -188,6 +211,9 @@ public partial class @ZombieControl: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
+            @Scream.started += instance.OnScream;
+            @Scream.performed += instance.OnScream;
+            @Scream.canceled += instance.OnScream;
         }
 
         private void UnregisterCallbacks(IZombieMovementActions instance)
@@ -201,6 +227,9 @@ public partial class @ZombieControl: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
+            @Scream.started -= instance.OnScream;
+            @Scream.performed -= instance.OnScream;
+            @Scream.canceled -= instance.OnScream;
         }
 
         public void RemoveCallbacks(IZombieMovementActions instance)
@@ -223,5 +252,6 @@ public partial class @ZombieControl: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnScream(InputAction.CallbackContext context);
     }
 }

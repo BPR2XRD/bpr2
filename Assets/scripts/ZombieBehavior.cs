@@ -8,7 +8,10 @@ public class ZombieBehavior : MonoBehaviour
     Animator animator;
     int isWalkingHash;
     int isRunningHash;
-
+    public AudioSource source1;
+    public AudioClip audioClipAttack;
+    public AudioSource source2;
+    public AudioClip audioClipScream;
     ZombieControl input;
 
     Vector2 currentMovement;
@@ -16,6 +19,7 @@ public class ZombieBehavior : MonoBehaviour
     bool movementPressed;
     bool runPressed;
     private bool isAttacking = false;
+    private bool isScreaming = false;
 
     [SerializeField]
     private float animationFinishTime = 0.9f;
@@ -34,6 +38,7 @@ public class ZombieBehavior : MonoBehaviour
         input.ZombieMovement.Run.canceled += ctx => runPressed = false;
 
         input.ZombieMovement.Attack.performed += ctx => Attack();
+        input.ZombieMovement.Scream.performed += ctx => Scream();
     }
     // Start is called before the first frame update
     void Start()
@@ -79,7 +84,10 @@ public class ZombieBehavior : MonoBehaviour
         Debug.Log("Attack button pressed");
         if (!isAttacking && AnimatorHasParameter("isAttacking", animator))
         {
-            Debug.Log("Setting character to attack");
+            if(!source2.isPlaying){
+                source1.PlayOneShot(audioClipAttack);
+            }
+            Debug.Log("Character Attacks");
             animator.SetTrigger("isAttacking");
             isAttacking = true;
         }
@@ -91,6 +99,9 @@ public class ZombieBehavior : MonoBehaviour
         {
             Debug.Log("Animator does not have the 'isAttacking' parameter");
         }
+    }
+    void Scream(){
+        source2.PlayOneShot(audioClipScream);
     }
 
     IEnumerator InitialiseAttack()
