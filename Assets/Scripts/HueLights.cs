@@ -1,5 +1,6 @@
 using Q42.HueApi;
 using Q42.HueApi.Interfaces;
+using Q42.HueApi.ColorConverters;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using Light = Q42.HueApi.Light;
+using Q42.HueApi.ColorConverters.Original;
 
 public class HueLights : MonoBehaviour
 {
@@ -17,7 +19,7 @@ public class HueLights : MonoBehaviour
     ILocalHueClient client;
     List<Light> lights = new();
 
-    public async void InitializeHue()
+    public async Task InitializeHue()
     {
         client = new LocalHueClient(BRIDGE_IP);
 
@@ -27,6 +29,30 @@ public class HueLights : MonoBehaviour
         }
 
         lights = (List<Light>)await client.GetLightsAsync();
+    }
+
+    public async Task UpdateLights()
+    {
+        lights = (List<Light>)await client.GetLightsAsync();
+    }
+
+    public async Task ChangeLight(string lightName, Color color)
+    {
+        if (client == null)
+        {
+            return;
+        }
+
+        var lightToChange = lights.FirstOrDefault((l) => l.Name == lightName);
+        if (lightToChange != null)
+        {
+            var command = new LightCommand();
+            var lightColor = new RGBColor(color.r, color.g, color.b);
+            command.TurnOn().SetColor(lightColor);
+
+            var lightsToAlter = new string[] { lightToChange.Id };
+            await client.SendCommandAsync(command, lightsToAlter);
+        }
     }
 
     //helper method to convert hex to RGB
@@ -50,13 +76,30 @@ public class HueLights : MonoBehaviour
     void Start()
     {
         //RegisterAppWithHueBridge();
-        InitializeHue();
+        TryToStart();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    async void TryToStart()
+    {
+        await InitializeHue();
+        Debug.Log(lights.Count);
+        foreach (var light in lights)
+        {
+            await ChangeLight(light.Name, Color.red);
+
+        }
+        await UpdateLights();
+        foreach (var light in lights)
+        {
+            Debug.Log(light.Name + " " + light.ToHex() +" "+ light.State.ToString());
+
+        }
     }
 
 
