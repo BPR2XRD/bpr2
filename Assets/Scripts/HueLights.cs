@@ -54,6 +54,19 @@ public class HueLights : MonoBehaviour
             await client.SendCommandAsync(command, lightsToAlter);
         }
     }
+    public async Task ChangeLights(Color color)
+    {
+        if (client == null ||  !lights.Any())
+        {
+            return;
+        }
+           var command = new LightCommand();
+            var lightColor = new RGBColor(color.r, color.g, color.b);
+        command.TurnOn().SetColor(lightColor);
+        command.Effect = Effect.ColorLoop;
+        await client.SendCommandAsync(command);
+        
+    }
 
     //helper method to convert hex to RGB
     private byte[] HexToRGB(string hex)
@@ -88,18 +101,12 @@ public class HueLights : MonoBehaviour
     async void TryToStart()
     {
         await InitializeHue();
-        Debug.Log(lights.Count);
-        foreach (var light in lights)
-        {
-            await ChangeLight(light.Name, Color.green);
+        //foreach (var light in lights)
+        //{
+        //    await ChangeLight(light.Name, Color.green);
 
-        }
-        await UpdateLights();
-        foreach (var light in lights)
-        {
-            Debug.Log(light.Name + " " + light.ToHex() +" "+ light.State.ToString()+" ");
-
-        }
+        //}
+        await ChangeLights(Color.red);
     }
 
 
