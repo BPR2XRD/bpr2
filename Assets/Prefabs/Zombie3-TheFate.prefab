@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 1860721408}
   - component: {fileID: 1860721409}
   - component: {fileID: 1860721407}
+  - component: {fileID: 507819289821016375}
   m_Layer: 0
   m_Name: Base HumanRArmForearm
   m_TagString: Untagged
@@ -262,6 +263,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &507819289821016375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825951251313487976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3712463426773240076}
 --- !u!1 &947470682347209660
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +351,7 @@ GameObject:
   - component: {fileID: 2004593235}
   - component: {fileID: 2004593237}
   - component: {fileID: 2004593236}
+  - component: {fileID: 7787879218859373492}
   m_Layer: 0
   m_Name: Base HumanRArmUpperarm
   m_TagString: Untagged
@@ -456,6 +471,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &7787879218859373492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054679451223179904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3712463426773240076}
 --- !u!1 &1176457199456908120
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,7 +653,8 @@ GameObject:
   - component: {fileID: 3305920991726709325}
   - component: {fileID: 7537417665459280382}
   - component: {fileID: 258947572}
-  - component: {fileID: 2611056639777188424}
+  - component: {fileID: 3712463426773240076}
+  - component: {fileID: 2043761022773006167}
   m_Layer: 0
   m_Name: Zombie3-TheFate
   m_TagString: Zombie
@@ -694,102 +723,32 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!82 &2611056639777188424
-AudioSource:
+--- !u!114 &3712463426773240076
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998371697940912222}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: c98a1b59a487e624aa757e1a484ad463, type: 2}
-  m_audioClip: {fileID: 8300000, guid: d2d45dd7b1cdb1f4b8cca8dc5d48def2, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 50
-  Pan2D: 0
-  rolloffMode: 2
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.005250931
-      value: 0.9737778
-      inSlope: -4.6856775
-      outSlope: -4.6856775
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.07998021
-    - serializedVersion: 3
-      time: 0.7448425
-      value: 0
-      inSlope: -0.31448627
-      outSlope: -0.31448627
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.19053854
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f8f2cdb810cfe0459a6e523e4fa0db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 5
+--- !u!114 &2043761022773006167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998371697940912222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe186ce1e1e992349a2659598c99f50c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2057808353243881084
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +951,7 @@ GameObject:
   - component: {fileID: 1710012903}
   - component: {fileID: 1710012904}
   - component: {fileID: 1710012902}
+  - component: {fileID: 2399447708769278726}
   m_Layer: 0
   m_Name: Base HumanLLegCalf
   m_TagString: Untagged
@@ -1111,6 +1071,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2399447708769278726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3179381017740555737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3712463426773240076}
 --- !u!1 &3291449531387036369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,6 +1192,7 @@ GameObject:
   - component: {fileID: 1013595080}
   - component: {fileID: 1013595082}
   - component: {fileID: 1013595081}
+  - component: {fileID: 1341635150671340790}
   m_Layer: 0
   m_Name: Base HumanRThigh
   m_TagString: Untagged
@@ -1338,6 +1312,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &1341635150671340790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3502348881708182905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3712463426773240076}
 --- !u!1 &3559617814451456369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,6 +1337,7 @@ GameObject:
   - component: {fileID: 954306926}
   - component: {fileID: 954306927}
   - component: {fileID: 954306925}
+  - component: {fileID: 6777831997365188402}
   m_Layer: 0
   m_Name: Base HumanLArmForearm
   m_TagString: Untagged
@@ -1469,6 +1457,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &6777831997365188402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3559617814451456369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3712463426773240076}
 --- !u!1 &3579941336222784524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,6 +1514,7 @@ GameObject:
   - component: {fileID: 476264198}
   - component: {fileID: 476264200}
   - component: {fileID: 476264199}
+  - component: {fileID: 3326419370664768622}
   m_Layer: 0
   m_Name: Base HumanLLegThigh
   m_TagString: Untagged
@@ -1632,6 +1634,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &3326419370664768622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3633321602474540272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3712463426773240076}
 --- !u!1 &3900033543089054744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1771,6 +1786,7 @@ GameObject:
   - component: {fileID: 663596957}
   - component: {fileID: 663596955}
   - component: {fileID: 663596956}
+  - component: {fileID: 884489889644178622}
   m_Layer: 0
   m_Name: Base HumanHead
   m_TagString: head
@@ -1894,6 +1910,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &884489889644178622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4354025322141056305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3712463426773240076}
 --- !u!1 &4367026659871180595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,6 +1934,7 @@ GameObject:
   - component: {fileID: 1086123917351998198}
   - component: {fileID: 811611071}
   - component: {fileID: 811611072}
+  - component: {fileID: 8160047925903281624}
   m_Layer: 0
   m_Name: Base HumanPelvis
   m_TagString: Untagged
@@ -1978,6 +2008,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2708023, y: 0.28194934, z: 0.35513407}
   m_Center: {x: -0.13540114, y: 0.0031117797, z: -0.0000013560057}
+--- !u!114 &8160047925903281624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4367026659871180595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3712463426773240076}
 --- !u!1 &4435908580361958326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,6 +2064,7 @@ GameObject:
   - component: {fileID: 1934442022}
   - component: {fileID: 1934442024}
   - component: {fileID: 1934442023}
+  - component: {fileID: 8179099359329252250}
   m_Layer: 0
   m_Name: Base HumanSpine2
   m_TagString: Untagged
@@ -2138,6 +2182,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &8179099359329252250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765172035560489139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3712463426773240076}
 --- !u!1 &5315677001553350782
 GameObject:
   m_ObjectHideFlags: 0
@@ -2349,6 +2406,7 @@ GameObject:
   - component: {fileID: 1111561143}
   - component: {fileID: 1111561145}
   - component: {fileID: 1111561144}
+  - component: {fileID: 5172850279603532924}
   m_Layer: 0
   m_Name: Base HumanLArmUpperarm
   m_TagString: Untagged
@@ -2468,6 +2526,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &5172850279603532924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5575805195334464980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3712463426773240076}
 --- !u!1 &5581336623821651049
 GameObject:
   m_ObjectHideFlags: 0
@@ -2890,6 +2961,7 @@ GameObject:
   - component: {fileID: 1941361682}
   - component: {fileID: 1941361683}
   - component: {fileID: 1941361681}
+  - component: {fileID: 7502723125917706624}
   m_Layer: 0
   m_Name: Base HumanRCalf
   m_TagString: Untagged
@@ -3009,6 +3081,19 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &7502723125917706624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569792997643425785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 3712463426773240076}
 --- !u!1 &7583087866962652926
 GameObject:
   m_ObjectHideFlags: 0
