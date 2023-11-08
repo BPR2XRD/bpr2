@@ -24,6 +24,8 @@ public class ZombieBehavior : MonoBehaviour
     [SerializeField]
     private float animationFinishTime = 0.9f;
 
+    
+
     private void Awake()
     {
         input = new ZombieControl();
