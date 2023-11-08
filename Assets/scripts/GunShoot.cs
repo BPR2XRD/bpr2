@@ -173,7 +173,7 @@ public class GunShoot : MonoBehaviour
 
         //Create the casing
         GameObject tempCasing;
-        tempCasing = Instantiate(casingPrefab, casingExitLocation.position, casingExitLocation.rotation) as GameObject;
+        tempCasing = Instantiate(casingPrefab, casingExitLocation.position, casingExitLocation.rotation);
         //Add force on casing to push it out
         tempCasing.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(ejectPower * 0.7f, ejectPower), casingExitLocation.position - casingExitLocation.right * 0.3f - casingExitLocation.up * 0.6f, 1f);
         //Add torque to make casing spin in random direction

@@ -91,13 +91,13 @@ public class HueLights : MonoBehaviour
         Debug.Log(lights.Count);
         foreach (var light in lights)
         {
-            await ChangeLight(light.Name, Color.red);
+            await ChangeLight(light.Name, Color.green);
 
         }
         await UpdateLights();
         foreach (var light in lights)
         {
-            Debug.Log(light.Name + " " + light.ToHex() +" "+ light.State.ToString());
+            Debug.Log(light.Name + " " + light.ToHex() +" "+ light.State.ToString()+" ");
 
         }
     }
