@@ -6,7 +6,6 @@ public class HealthZombie : MonoBehaviour
 {
     public float maxHealth;
     public float currentHealth;
-    [SerializeField] private Transform zombieTransform;
     Ragdoll ragdoll;
     // Start is called before the first frame update
     void Start()
@@ -23,11 +22,12 @@ public class HealthZombie : MonoBehaviour
         }
     }
     private void Die(){
-        if(zombieTransform.transform.CompareTag("Zombie"))
+        if(transform.CompareTag("Zombie"))
         {
             GetComponent<ZombieBehavior>().enabled = false;
         }
         ragdoll.ActivateRagdoll();
+        Destroy(gameObject, 10f);
     }
 
     // Update is called once per frame
