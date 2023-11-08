@@ -4926,6 +4926,22 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: f442048109d05d3469567616bb2f68bc, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: f442048109d05d3469567616bb2f68bc, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: f442048109d05d3469567616bb2f68bc, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: f442048109d05d3469567616bb2f68bc, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19271,7 +19287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1945715035}
 --- !u!4 &764994398 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ee310940381d5f3409a44456d948e8e3, type: 3}
@@ -21263,7 +21279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1945715035}
 --- !u!1001 &878873668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24075,7 +24091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1945715035}
 --- !u!1001 &1028510390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26177,7 +26193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1945715035}
 --- !u!1001 &1127800750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28456,7 +28472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1945715035}
 --- !u!4 &1214637330 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 9bfa0c2985bcdca469da2285e0a27429, type: 3}
@@ -29190,7 +29206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1945715035}
 --- !u!1001 &1250371415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30195,7 +30211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1945715035}
 --- !u!4 &1294748259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 869032ec2af3de44ea014b6403f49d9b, type: 3}
@@ -30768,7 +30784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: .100000001
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -30784,11 +30800,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: InitialModule.startSpeed.minScalar
-      value: 1.0000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
-      value: 1.0000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -30816,11 +30832,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.b
-      value: 1.0000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.g
-      value: 0.0000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.r
@@ -30832,7 +30848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.b
-      value: 1.0000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.g
@@ -30840,23 +30856,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.r
-      value: 0.0000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key2.a
-      value: 0.0000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key2.b
-      value: 0.0000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key2.g
-      value: 1.0000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key2.r
       value: 0.7216
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.m_NumColorKeys
@@ -30864,7 +30888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: InitialModule.startSpeed.maxCurve.m_Curve.Array.data[0].value
-      value: .300000012
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: InitialModule.startSpeed.minCurve.m_Curve.Array.data[0].value
@@ -31995,7 +32019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1945715035}
 --- !u!1001 &1382178286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32768,11 +32792,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: .0500000007
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
-      value: 1.0000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -32785,6 +32809,14 @@ PrefabInstance:
     - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.5529
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 0823f6e3921b4294883a5d00faa4ef98, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33346,7 +33378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1945715035}
 --- !u!1001 &1430103657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35285,7 +35317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1945715035}
 --- !u!4 &1513931997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7814f70856378f14d83c6996b369cee7, type: 3}
@@ -35442,23 +35474,6 @@ PrefabInstance:
     - target: {fileID: 19800000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
       propertyPath: InitialModule.startRotationY.minMaxState
       value: 3
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
-      propertyPath: InitialModule.startSizeY.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
-      propertyPath: InitialModule.startSizeZ.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
-      propertyPath: InitialModule.startRotationX.minMaxState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 19800000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
-      propertyPath: InitialModule.startRotationY.minMaxState
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
       propertyPath: InitialModule.startSize.maxCurve.m_Curve.Array.data[0].value
@@ -35466,7 +35481,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
       propertyPath: InitialModule.startSize.minCurve.m_Curve.Array.data[0].value
-      value: 0.3125
       value: 0.3125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -38780,7 +38794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1945715035}
 --- !u!1001 &1714943299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43127,7 +43141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1945715035}
 --- !u!4 &1916170856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ffca8cb4c459bc94cbd86c0d26de6139, type: 3}
@@ -47097,7 +47111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1945715035}
 --- !u!1001 &2051945440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49525,7 +49539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa449d6aa8feeb4f902d6acb27af5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1945715035}
 --- !u!4 &2129314747 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: bdff47564c80c4c4faaf9f6eacc8def0, type: 3}
