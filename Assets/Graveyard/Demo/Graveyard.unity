@@ -793,7 +793,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21776650}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &21776654
 Camera:
   m_ObjectHideFlags: 0
@@ -44403,6 +44403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   currentHealth: 5
+  zombieTransform: {fileID: 0}
 --- !u!114 &1945715036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50514,10 +50515,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8142162191165678632, guid: 3739b8a9f7d393040afe8170d0aec4e7, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1846472389874496665, guid: 3739b8a9f7d393040afe8170d0aec4e7, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1394777591755751142, guid: 3739b8a9f7d393040afe8170d0aec4e7, type: 3}
-      insertIndex: 5
+      insertIndex: 4
       addedObject: {fileID: 1120156774}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1433720487171962289, guid: 3739b8a9f7d393040afe8170d0aec4e7, type: 3}
