@@ -12,31 +12,21 @@ using Light = Q42.HueApi.Light;
 public class HueLights : MonoBehaviour
 {
     private const string BRIDGE_IP = "192.168.126.44";
-    private const string APP_ID = "7556163a989040aa9d5763cbfefef5bf";
-    private const string APP_ID2 = "7556163a-9890-40aa-9d57-63cbfefef5bf";
     [SerializeField]
     HueSettings hueSettings;
-    ILocalHueClient _client;
-    Light _light;
-    List<string> _lightList;
-    bool _isInitialized;
+    ILocalHueClient client;
+    List<Light> lights = new();
 
     public async void InitializeHue()
     {
-        _isInitialized = false;
-        //initialize client with bridge IP and app GUID
-        _client = new LocalHueClient(BRIDGE_IP);
-        _client.Initialize(APP_ID);
+        client = new LocalHueClient(BRIDGE_IP);
 
-        //only working with light #1 in this demo
-        _light = await _client.GetLightAsync("1");
-        _lightList = new List<string>() { "1" };
+        if (!string.IsNullOrEmpty(hueSettings.AppKey))
+        {
+            client.Initialize(hueSettings.AppKey);
+        }
 
-        var hue = _light.State.Hue;
-        Debug.Log(hue);
-        byte brightness = _light.State.Brightness;
-
-        _isInitialized = true;
+        lights = (List<Light>)await client.GetLightsAsync();
     }
 
     //helper method to convert hex to RGB
@@ -59,7 +49,8 @@ public class HueLights : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RegisterAppWithHueBridge();
+        //RegisterAppWithHueBridge();
+        InitializeHue();
     }
 
     // Update is called once per frame
@@ -67,9 +58,12 @@ public class HueLights : MonoBehaviour
     {
 
     }
+
+
+    //Used to get AppKey for first time
     public async Task RegisterAppWithHueBridge()
     {
-        Debug.Log("Regster hue");
+        Debug.Log("Register hue");
         IBridgeLocator locator = new HttpBridgeLocator();
         var timeout = TimeSpan.FromSeconds(5);
         var bridges = await locator.LocateBridgesAsync(timeout);
