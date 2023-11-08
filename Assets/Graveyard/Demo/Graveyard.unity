@@ -49976,6 +49976,10 @@ PrefabInstance:
       value: Zombie1
       objectReference: {fileID: 0}
     - target: {fileID: 1433720487171962289, guid: 3739b8a9f7d393040afe8170d0aec4e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433720487171962289, guid: 3739b8a9f7d393040afe8170d0aec4e7, type: 3}
       propertyPath: m_TagString
       value: Zombie
       objectReference: {fileID: 0}
