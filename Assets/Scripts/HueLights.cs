@@ -36,14 +36,14 @@ public class HueLights : MonoBehaviour
         lights = (List<Light>)await client.GetLightsAsync();
     }
 
-    public async Task ChangeLight(string lightName, Color color)
+    public async Task ChangeLight(string lightId, Color color)
     {
         if (client == null)
         {
             return;
         }
 
-        var lightToChange = lights.FirstOrDefault((l) => l.Name == lightName);
+        var lightToChange = lights.FirstOrDefault((l) => l.Id == lightId);
         if (lightToChange != null)
         {
             var command = new LightCommand();
@@ -103,7 +103,7 @@ public class HueLights : MonoBehaviour
         await InitializeHue();
         //foreach (var light in lights)
         //{
-        //    await ChangeLight(light.Name, Color.green);
+        //    await ChangeLight(light.Id, Color.green);
 
         //}
         await ChangeLights(Color.red);
