@@ -63,7 +63,7 @@ public class HueLights : MonoBehaviour
            var command = new LightCommand();
             var lightColor = new RGBColor(color.r, color.g, color.b);
         command.TurnOn().SetColor(lightColor);
-        command.Effect = Effect.ColorLoop;
+        command.Effect = Effect.None;
         await client.SendCommandAsync(command);
         
     }
@@ -106,7 +106,7 @@ public class HueLights : MonoBehaviour
         //    await ChangeLight(light.Id, Color.green);
 
         //}
-        await ChangeLights(Color.red);
+        await ChangeLights(Color.white);
     }
 
     
