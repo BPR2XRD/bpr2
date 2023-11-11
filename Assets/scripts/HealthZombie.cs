@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HealthZombie : MonoBehaviour
 {
-    public float maxHealth;
+    public float maxHealth = 5;
     public float currentHealth;
     public GameObject zombiePrefab; // Assign the zombie prefab in the Inspector
     public Transform spawnPoint; // Assign a spawn point in the Inspector

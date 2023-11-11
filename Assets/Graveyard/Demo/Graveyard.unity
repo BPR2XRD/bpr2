@@ -3747,6 +3747,7 @@ GameObject:
   - component: {fileID: 180554063}
   - component: {fileID: 180554062}
   - component: {fileID: 180554064}
+  - component: {fileID: 180554065}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -3797,6 +3798,18 @@ MonoBehaviour:
   appKey: E1ULQYEoJZ4u5MLywqPOic6It1lWT6cZj-e0gAWB
   appName: BPR
   deviceName: BPR_Proj
+--- !u!114 &180554065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180554061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dadf7cfa6ceceb408a48551c3ae579e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &182714597
 GameObject:
   m_ObjectHideFlags: 0
@@ -50273,6 +50286,10 @@ PrefabInstance:
     - target: {fileID: 3340268033518341392, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142738905028784097, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_AllowXRRendering
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5347867720313072414, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
       propertyPath: m_LocalPosition.x
