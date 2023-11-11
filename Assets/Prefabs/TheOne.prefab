@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TheOne
       objectReference: {fileID: 0}
+    - target: {fileID: 8965585503719987469, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_TagString
+      value: Zombie
+      objectReference: {fileID: 0}
     - target: {fileID: 9175123876208626299, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
       propertyPath: m_Enabled
       value: 1

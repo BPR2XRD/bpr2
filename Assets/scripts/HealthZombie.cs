@@ -39,7 +39,8 @@ public class HealthZombie : MonoBehaviour
     }
 
     private void InstantiateNewZombie()
-    {
+    {   
+        if(transform.CompareTag("ZombieBot"))
         if (zombiePrefab != null && spawnPoint != null)
         {
             Instantiate(zombiePrefab, spawnPoint.position, spawnPoint.rotation);
