@@ -50315,6 +50315,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6076162020038379615, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: ZombieHurt
+      value: 
+      objectReference: {fileID: 8300000, guid: aea6a47dade3ffc41b03cedcf909ebe9, type: 3}
+    - target: {fileID: 6076162020038379615, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 567716557}
