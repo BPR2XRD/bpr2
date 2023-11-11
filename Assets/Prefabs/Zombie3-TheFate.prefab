@@ -737,6 +737,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   currentHealth: 5
+  zombiePrefab: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  audioSource: {fileID: 0}
+  ZombieHurt: {fileID: 0}
 --- !u!114 &2043761022773006167
 MonoBehaviour:
   m_ObjectHideFlags: 0
