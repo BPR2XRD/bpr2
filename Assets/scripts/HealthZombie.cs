@@ -32,15 +32,14 @@ public class HealthZombie : MonoBehaviour
         if (transform.CompareTag("Zombie"))
         {
             GetComponent<ZombieBehavior>().enabled = false;
+            InstantiateNewZombie();
         }
         ragdoll.ActivateRagdoll();
-        InstantiateNewZombie();
         Destroy(gameObject, 10f); // Adjust the time as needed before destroying the zombie
     }
 
     private void InstantiateNewZombie()
     {   
-        if(transform.CompareTag("ZombieBot"))
         if (zombiePrefab != null && spawnPoint != null)
         {
             Instantiate(zombiePrefab, spawnPoint.position, spawnPoint.rotation);

@@ -109,7 +109,7 @@ public class HueLights : MonoBehaviour
         await ChangeLights(Color.red);
     }
 
-
+    
     //Used to get AppKey for first time
     public async Task RegisterAppWithHueBridge()
     {

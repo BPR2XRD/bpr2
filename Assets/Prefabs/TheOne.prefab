@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4142738905028784097, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_AllowXRRendering
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5347867720313072414, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -67,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 6076162020038379615, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
       propertyPath: zombiePrefab
       value: 
-      objectReference: {fileID: 1998371697940912222, guid: 7de81b477351a9c499811e400a134819, type: 3}
+      objectReference: {fileID: 3522789485694110868}
     - target: {fileID: 8965585503719987469, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
       propertyPath: m_Name
       value: TheOne
@@ -85,3 +89,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+--- !u!1 &3522789485694110868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8965585503719987469, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+  m_PrefabInstance: {fileID: 5516732371729667481}
+  m_PrefabAsset: {fileID: 0}
