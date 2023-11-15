@@ -35248,6 +35248,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 328355550074930495, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 520410749054589364, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -35259,6 +35263,10 @@ PrefabInstance:
     - target: {fileID: 2673159910122954298, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
       propertyPath: m_VolumeLayerMask.m_Bits
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054316274884777723, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4927002175107510981, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
       propertyPath: m_Enabled
@@ -35332,6 +35340,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8658155317992252274, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 7028806889179478337, guid: 6f7b132b58c3fe04aab5fc704fe5cbac, type: 3}
     - target: {fileID: 8658155319042510688, guid: 82f2a48555b8a664abae07cf527d63f6, type: 3}
       propertyPath: m_Enabled
       value: 0
