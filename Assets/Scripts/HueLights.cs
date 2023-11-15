@@ -21,14 +21,22 @@ public class HueLights : MonoBehaviour
 
     public async Task InitializeHue()
     {
-        client = new LocalHueClient(BRIDGE_IP);
-
-        if (!string.IsNullOrEmpty(hueSettings.AppKey))
+        try
         {
-            client.Initialize(hueSettings.AppKey);
-        }
+            client = new LocalHueClient(BRIDGE_IP);
 
-        lights = (List<Light>)await client.GetLightsAsync();
+            if (!string.IsNullOrEmpty(hueSettings.AppKey))
+            {
+                client.Initialize(hueSettings.AppKey);
+            }
+
+            lights = (List<Light>)await client.GetLightsAsync();
+        }
+        catch (Exception ex)
+        {
+            Debug.LogException(ex);
+        }
+       
     }
 
     public async Task UpdateLights()
