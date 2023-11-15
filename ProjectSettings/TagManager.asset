@@ -9,6 +9,7 @@ TagManager:
   - Zombie
   - head
   - ZombieBot
+  - Ground
   layers:
   - Default
   - TransparentFX

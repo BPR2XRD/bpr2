@@ -181,7 +181,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4210100720165400533, guid: 87e308cb23eea97419b3c2623d8bb3fa, type: 3}
       propertyPath: m_Name
-      value: M1911 Handgun_Black Variant
+      value: Handgun_Black Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4213711620244162979, guid: 87e308cb23eea97419b3c2623d8bb3fa, type: 3}
       propertyPath: m_LocalScale.x
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletHole: {fileID: 2278457755078455827, guid: 70eb40aefb8eb7646bea911689881a3c, type: 3}
-  impactEffect: {fileID: 100002, guid: 00fedc70b62a31e448e8ccc298257b56, type: 3}
+  impactEffect: {fileID: 100002, guid: 8cdad183149decd418799d731f0c7079, type: 3}
   bloodEffect: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
 --- !u!82 &8103026849567968653
 AudioSource:

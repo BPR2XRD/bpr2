@@ -130,17 +130,9 @@ public class GunShoot : MonoBehaviour
             Debug.Log(hit.transform.name);
             if (hit.transform.CompareTag("Player")) return;
 
-            if (hit.transform.TryGetComponent<Target>(out var target))
+            if (hit.collider.CompareTag("Ground"))
             {
-                if (hit.collider.CompareTag("head")) // for extra damage
-                {
-                    target.TakeDamage(headDamage);
-                }
-                else
-                {
-                    target.TakeDamage(damage);
-                }
-                hitEffect.ShowHitEffect(hit, HitEffect.Effects.Impact, 1f);
+                hitEffect.ShowHitEffect(hit, HitEffect.Effects.Hole, 4f);
             }
             else if (hit.transform.TryGetComponent<HitBox>(out var hitBox))
             {
@@ -156,7 +148,7 @@ public class GunShoot : MonoBehaviour
             }
             else
             {
-                hitEffect.ShowHitEffect(hit, HitEffect.Effects.Hole, 4f);
+                hitEffect.ShowHitEffect(hit, HitEffect.Effects.Impact, 2f);
             }
             if (hit.rigidbody != null)
             {
