@@ -34576,8 +34576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79e78db482eb496e870da1e42b34d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coffinPrefab: {fileID: 99839612}
-  zombiePrefab: {fileID: 0}
+  coffinPrefab: {fileID: 7775438241838247235, guid: 191b98add2d884b97a87ae213261bc82, type: 3}
+  zombiePrefab: {fileID: 8965585503719987469, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
   spawnHeightOffset: 5
 --- !u!1001 &1479554927
 PrefabInstance:
