@@ -9,19 +9,21 @@ public class HealthZombie : MonoBehaviour
     Ragdoll ragdoll;
     public AudioSource audioSource;
     public AudioClip ZombieHurt;
+    bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
     {
         ragdoll = GetComponent<Ragdoll>();
         currentHealth = maxHealth;
+        isDead = false;
     }
 
     public void TakeDamage(int amount)
     {
         audioSource.PlayOneShot(ZombieHurt);
         currentHealth -= amount;
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
             Die();
         }
@@ -34,8 +36,13 @@ public class HealthZombie : MonoBehaviour
             GetComponent<ZombieBehavior>().enabled = false;
             InstantiateNewZombie();
         }
+        isDead = true;
         ragdoll.ActivateRagdoll();
-        Destroy(gameObject, 10f); // Adjust the time as needed before destroying the zombie
+        if (TryGetComponent(out Disolve disolve))
+        {
+            disolve.enabled = true;
+        }
+        Destroy(gameObject, 4f); // Adjust the time as needed before destroying the zombie
     }
 
     private void InstantiateNewZombie()
