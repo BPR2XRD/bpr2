@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {   
     public void PlayGame(){
-        SceneManager.LoadSceneAsync("MainMenu");
+        SceneManager.LoadSceneAsync(1);
     }
     // Start is called before the first frame update
     void Start()
