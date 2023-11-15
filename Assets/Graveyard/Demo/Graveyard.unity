@@ -343,6 +343,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3365721950753890163, guid: 86f3a06f6af5fc049b7bb2901c49ba20, type: 3}
+      propertyPath: boneSize
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365721950753890163, guid: 86f3a06f6af5fc049b7bb2901c49ba20, type: 3}
+      propertyPath: boneColor.a
+      value: 0.5294118
+      objectReference: {fileID: 0}
     - target: {fileID: 3990543351368582286, guid: 86f3a06f6af5fc049b7bb2901c49ba20, type: 3}
       propertyPath: m_Layer
       value: 7
