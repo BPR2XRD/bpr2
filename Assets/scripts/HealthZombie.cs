@@ -37,7 +37,7 @@ public class HealthZombie : MonoBehaviour
         {
             GetComponent<ZombieBehavior>().enabled = false;
             if(respawn!= null)
-            respawn.GetComponent<ControllerPlayerRespawn>().InstantiateNewZombie();
+                  respawn.GetComponent<ControllerPlayerRespawn>().InstantiateNewZombie();
         }
         isDead = true;
         ragdoll.ActivateRagdoll();
