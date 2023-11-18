@@ -7,23 +7,23 @@ public class TopViewDropObject : MonoBehaviour
     public GameObject coffinPrefab;
     public GameObject zombiePrefab;
 
-    public float spawnHeightOffset = 3f; 
+    public float spawnHeightOffset = 3f;
 
     void Start()
     {
-        // Get the camera component attached to the same GameObject
         topViewCamera = GetComponent<Camera>();
-
-        // If the camera component doesn't exist, output an error message
         if (topViewCamera == null)
         {
             Debug.LogError("Camera component not found on " + gameObject.name);
         }
     }
 
-    void Update()
+   void Update()
+{
+    if (Mouse.current.leftButton.wasPressedThisFrame)
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        // Check if the number of zombies is less than 40
+        if (ObjectSpawner.zombiesCurrentlyOnMap < 40)
         {
             Vector2 mousePosition = Mouse.current.position.ReadValue();
             Ray ray = topViewCamera.ScreenPointToRay(mousePosition);
@@ -38,4 +38,5 @@ public class TopViewDropObject : MonoBehaviour
             }
         }
     }
+}
 }
