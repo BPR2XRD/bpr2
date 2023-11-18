@@ -42,7 +42,7 @@ public class HealthZombie : MonoBehaviour
         {
             disolve.enabled = true;
         }
-        Destroy(gameObject, 4f); // Adjust the time as needed before destroying the zombie
+        Destroy(gameObject, 3.5f); // Adjust the time as needed before destroying the zombie
     }
 
     private void InstantiateNewZombie()
