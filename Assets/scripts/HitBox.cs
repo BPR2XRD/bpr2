@@ -1,13 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HitBox : MonoBehaviour
 {
-    public HealthZombie health;
+    public ZombieBotController zombieBotController;
+
+    void Awake()
+    {
+        zombieBotController = GetComponentInParent<ZombieBotController>();
+    }
    
     public void OnBulletHit(int damage)
     {
-        health.TakeDamage(damage);
+        zombieBotController.TakeDamage(damage);
     }
 }
