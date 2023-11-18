@@ -10,6 +10,7 @@ TagManager:
   - head
   - ZombieBot
   - Ground
+  - ControllerPLayerSpawner
   layers:
   - Default
   - TransparentFX

@@ -1,15 +1,16 @@
+using System.Linq;
 using UnityEngine;
 
 public class HealthZombie : MonoBehaviour
 {
     public float maxHealth = 5;
     public float currentHealth;
-    public GameObject zombiePrefab; // Assign the zombie prefab in the Inspector
-    public Transform spawnPoint; // Assign a spawn point in the Inspector
     Ragdoll ragdoll;
     public AudioSource audioSource;
     public AudioClip ZombieHurt;
     bool isDead = false;
+    // public ControllerPlayerRespawn respawn;
+    GameObject respawn;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class HealthZombie : MonoBehaviour
         ragdoll = GetComponent<Ragdoll>();
         currentHealth = maxHealth;
         isDead = false;
+       respawn = GameObject.FindGameObjectWithTag("ControllerPlayerSpawn");
     }
 
     public void TakeDamage(int amount)
@@ -34,7 +36,8 @@ public class HealthZombie : MonoBehaviour
         if (transform.CompareTag("Zombie"))
         {
             GetComponent<ZombieBehavior>().enabled = false;
-            InstantiateNewZombie();
+            if(respawn!= null)
+            respawn.GetComponent<ControllerPlayerRespawn>().InstantiateNewZombie();
         }
         isDead = true;
         ragdoll.ActivateRagdoll();
@@ -45,15 +48,4 @@ public class HealthZombie : MonoBehaviour
         Destroy(gameObject, 3.5f); // Adjust the time as needed before destroying the zombie
     }
 
-    private void InstantiateNewZombie()
-    {   
-        if (zombiePrefab != null && spawnPoint != null)
-        {
-            Instantiate(zombiePrefab, spawnPoint.position, spawnPoint.rotation);
-        }
-        else
-        {
-            Debug.LogError("Zombie prefab or spawn point not set!");
-        }
-    }
 }
