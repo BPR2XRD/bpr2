@@ -144,7 +144,7 @@ public class GunShoot : MonoBehaviour
                 {
                     hitBox.OnBulletHit(damage);
                 }
-                hitEffect.ShowHitEffect(hit, HitEffect.Effects.Blood, 1f);
+                hitEffect.ShowHitEffect(hit, HitEffect.Effects.Blood, 3f);
             }
             else
             {

@@ -334,8 +334,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletHole: {fileID: 2278457755078455827, guid: 70eb40aefb8eb7646bea911689881a3c, type: 3}
-  impactEffect: {fileID: 100002, guid: 00fedc70b62a31e448e8ccc298257b56, type: 3}
-  bloodEffect: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
+  impactEffect: {fileID: 100002, guid: 8cdad183149decd418799d731f0c7079, type: 3}
+  bloodPrefabs:
+  - {fileID: 2656253210798625995, guid: ac1ca8f3cc552c14a99796cc74719ddc, type: 3}
+  - {fileID: 0}
+  - {fileID: 5865290276592450837, guid: 1745f890fd00c5347b8127f1e70d4256, type: 3}
+  - {fileID: 4288107571095694937, guid: 5ae37a00e66c74745a9ab6f760e7b547, type: 3}
+  - {fileID: 2360933683143488451, guid: 9ee80949face93d4a82bce9f8acec3bf, type: 3}
+  - {fileID: 8859926575668995837, guid: cc1ab581bd427804498697bcc8d130a3, type: 3}
+  - {fileID: 5371219466416337994, guid: e1d34eaf7d3ac084782ca329c8b74c60, type: 3}
 --- !u!82 &8103026849567968653
 AudioSource:
   m_ObjectHideFlags: 0

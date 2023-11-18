@@ -6,8 +6,7 @@ public class HitEffect : MonoBehaviour
 {
     public GameObject bulletHole;
     public GameObject impactEffect;
-    public GameObject bloodEffect;
- 
+    public GameObject[] bloodPrefabs;
     public void ShowHitEffect(RaycastHit hit, Effects effect, float time)
     {
         switch (effect)
@@ -19,7 +18,12 @@ public class HitEffect : MonoBehaviour
                 InstantiateAndDestroy(hit, impactEffect, time); 
                 break;
             case Effects.Blood:
-                InstantiateAndDestroy(hit, bloodEffect, time);
+                int randomIndex = Random.Range(0, bloodPrefabs.Length);
+                var direction = hit.normal;
+                float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + 180;
+                var instance = Instantiate(bloodPrefabs[randomIndex], hit.point, Quaternion.Euler(0, angle + 90, 0));
+                //instance.GetComponent<BFX_BloodSettings>().GroundHeight = 
+                Destroy(instance, time);
                 break;
         }
     }
