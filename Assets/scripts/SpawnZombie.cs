@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+// using Random = UnityEngine.Random;
 
 public class ObjectSpawner : MonoBehaviour
 {
@@ -24,34 +26,47 @@ public class ObjectSpawner : MonoBehaviour
         while (true) // Infinite loop for continuous waves
         {
             float elapsedTime = 0f;
-            float currentSpawnInterval = initialSpawnInterval;
-            zombiesCurrentlyOnMap = 0; // Reset zombie count at the start of each wave
+        float currentSpawnInterval = initialSpawnInterval;
+        zombiesCurrentlyOnMap = 0; // Reset zombie count at the start of each wave
 
-            while (elapsedTime < waveDuration)
+        while (elapsedTime < waveDuration)
+        {
+            if (zombiesCurrentlyOnMap < 40)
             {
                 foreach (Transform spawnPoint in spawnPoints)
                 {
                     InstantiateZombie(spawnPoint);
                 }
-
-                yield return new WaitForSeconds(currentSpawnInterval);
-
-                elapsedTime += currentSpawnInterval;
-                if (elapsedTime % reductionFrequency < currentSpawnInterval && 
-                    currentSpawnInterval > minSpawnInterval)
-                {
-                    currentSpawnInterval -= intervalReduction;
-                }
             }
+
+            // Wait for the next spawn interval or until zombie count drops to 30 or less
+            while (zombiesCurrentlyOnMap >= 40)
+            {
+                yield return null; // Wait indefinitely
+            }
+
+            yield return new WaitForSeconds(currentSpawnInterval);
+
+            elapsedTime += currentSpawnInterval;
+            if (elapsedTime % reductionFrequency < currentSpawnInterval && 
+                currentSpawnInterval > minSpawnInterval)
+            {
+                currentSpawnInterval -= intervalReduction;
+            }
+        }
 
             // Super attack: spawn 30 zombies at the end of the wave
-            for (int i = 0; i < 30; i++)
+            if (zombiesCurrentlyOnMap < 40)
+        {
+            int zombiesToSpawn = Math.Min(30, 40 - zombiesCurrentlyOnMap); // Spawn up to the limit of 40
+            for (int i = 0; i < zombiesToSpawn; i++)
             {
-                Transform selectedSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+                Transform selectedSpawnPoint = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
                 InstantiateZombie(selectedSpawnPoint);
             }
+        }
 
-            yield return new WaitForSeconds(breakDuration); // Break between waves
+        yield return new WaitForSeconds(breakDuration); // Break between waves
         }
     }
 

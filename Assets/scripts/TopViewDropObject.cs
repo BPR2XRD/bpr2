@@ -18,25 +18,25 @@ public class TopViewDropObject : MonoBehaviour
         }
     }
 
-    void Update()
+   void Update()
+{
+    if (Mouse.current.leftButton.wasPressedThisFrame)
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        // Check if the number of zombies is less than 40
+        if (ObjectSpawner.zombiesCurrentlyOnMap < 40)
         {
-            // Check if the number of zombies is less than 50
-            if (ObjectSpawner.zombiesCurrentlyOnMap < 50)
-            {
-                Vector2 mousePosition = Mouse.current.position.ReadValue();
-                Ray ray = topViewCamera.ScreenPointToRay(mousePosition);
-                RaycastHit hit;
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+            Ray ray = topViewCamera.ScreenPointToRay(mousePosition);
+            RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit))
-                {
-                    Vector3 clickPoint = hit.point;
-                    clickPoint.y += spawnHeightOffset;
-                    GameObject droppedCoffin = Instantiate(coffinPrefab, clickPoint, Quaternion.identity);
-                    droppedCoffin.GetComponent<CoffinController>().OnCoffinDropped(zombiePrefab);
-                }
+            if (Physics.Raycast(ray, out hit))
+            {
+                Vector3 clickPoint = hit.point;
+                clickPoint.y += spawnHeightOffset;
+                GameObject droppedCoffin = Instantiate(coffinPrefab, clickPoint, Quaternion.identity);
+                droppedCoffin.GetComponent<CoffinController>().OnCoffinDropped(zombiePrefab);
             }
         }
     }
+}
 }
