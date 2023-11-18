@@ -776,6 +776,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100002, guid: bc6aebc47a339f74e873b2f2fce83cce, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: bc6aebc47a339f74e873b2f2fce83cce, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1464,6 +1468,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100002, guid: bc6aebc47a339f74e873b2f2fce83cce, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9113277256533708239}
+    - targetCorrespondingSourceObject: {fileID: 100002, guid: bc6aebc47a339f74e873b2f2fce83cce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7142794112473318959}
+    - targetCorrespondingSourceObject: {fileID: 100002, guid: bc6aebc47a339f74e873b2f2fce83cce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8808887813421300801}
     - targetCorrespondingSourceObject: {fileID: 100302, guid: bc6aebc47a339f74e873b2f2fce83cce, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4361637712866263872}
@@ -2761,6 +2771,44 @@ MonoBehaviour:
     trackingRotationOffset: {x: 0, y: 0, z: 0}
   headBodyPositionOffset: {x: 0, y: -0.54, z: 0}
   headBodyYawOffset: 0
+--- !u!136 &7142794112473318959
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7308525700265068810}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.13, z: -0.03}
+--- !u!114 &8808887813421300801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7308525700265068810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ae701d8401f614aae1e05772ac30cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  isDead: 0
 --- !u!1 &7308525700265068908 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100036, guid: bc6aebc47a339f74e873b2f2fce83cce, type: 3}
