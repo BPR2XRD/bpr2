@@ -3,41 +3,49 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    public GameObject objectToSpawn; // Assign your prefab to this in the Inspector
+    public GameObject objectToSpawn;
+    public Transform spawnPoint1;
+    public Transform spawnPoint2;
+    public Transform spawnPoint3;
+    public Transform spawnPoint4;
 
-    // Transforms for where the objects will be instantiated
-    public Transform spawnPoint1; // Assign your empty GameObject here in the Inspector
-    public Transform spawnPoint2; // Assign your empty GameObject here in the Inspector
+    private float initialSpawnInterval = 15f; // Initial interval
+    private float minSpawnInterval = 5f; // Minimum interval
+    private float intervalReduction = 1f; // Interval reduction amount
+    private float reductionFrequency = 20f; // Time in seconds to reduce interval
+    private float waveDuration = 300f; // Duration of each wave (5 minutes)
+    private float breakDuration = 15f; // Duration of break between waves
 
-    // Time interval for spawning objects
-    private float spawnInterval = 15f; // 15 seconds
-
-    // Total time for which objects will be spawned
-    private float totalTime = 900f; // 15 minutes
-
-    // Start is called before the first frame update
     void Start()
     {
-        // Start the Coroutine for spawning objects
-        StartCoroutine(SpawnObjects());
+        StartCoroutine(SpawnWaves());
     }
 
-    private IEnumerator SpawnObjects()
+    private IEnumerator SpawnWaves()
     {
-        float elapsedTime = 0f;
-
-        // Spawn objects until the total time has been reached
-        while (elapsedTime < totalTime)
+        while (true) // Infinite loop for continuous waves
         {
-            // Instantiate objects at both positions
-            Instantiate(objectToSpawn, spawnPoint1.position, spawnPoint1.rotation);
-            Instantiate(objectToSpawn, spawnPoint2.position, spawnPoint2.rotation);
-            
-            // Wait for the spawn interval
-            yield return new WaitForSeconds(spawnInterval);
+            float elapsedTime = 0f;
+            float currentSpawnInterval = initialSpawnInterval;
 
-            // Increment the elapsed time by the spawn interval
-            elapsedTime += spawnInterval;
+            while (elapsedTime < waveDuration)
+            {
+                Instantiate(objectToSpawn, spawnPoint1.position, spawnPoint1.rotation);
+                Instantiate(objectToSpawn, spawnPoint2.position, spawnPoint2.rotation);
+                Instantiate(objectToSpawn, spawnPoint3.position, spawnPoint3.rotation);
+                Instantiate(objectToSpawn, spawnPoint4.position, spawnPoint4.rotation);
+
+                yield return new WaitForSeconds(currentSpawnInterval);
+
+                elapsedTime += currentSpawnInterval;
+                if (elapsedTime % reductionFrequency < currentSpawnInterval && 
+                    currentSpawnInterval > minSpawnInterval)
+                {
+                    currentSpawnInterval -= intervalReduction;
+                }
+            }
+
+            yield return new WaitForSeconds(breakDuration); // Break between waves
         }
     }
 }
