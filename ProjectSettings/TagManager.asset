@@ -11,6 +11,8 @@ TagManager:
   - ZombieBot
   - Ground
   - ControllerPlayerSpawn
+  - Coffin
+  - Barricade
   layers:
   - Default
   - TransparentFX
