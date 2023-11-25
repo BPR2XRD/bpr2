@@ -337,7 +337,7 @@ MonoBehaviour:
   impactEffect: {fileID: 100002, guid: 8cdad183149decd418799d731f0c7079, type: 3}
   bloodPrefabs:
   - {fileID: 2656253210798625995, guid: ac1ca8f3cc552c14a99796cc74719ddc, type: 3}
-  - {fileID: 0}
+  - {fileID: 3034872428933141512, guid: c7a913d1aa94693498ed33fb4402c3d0, type: 3}
   - {fileID: 5865290276592450837, guid: 1745f890fd00c5347b8127f1e70d4256, type: 3}
   - {fileID: 4288107571095694937, guid: 5ae37a00e66c74745a9ab6f760e7b547, type: 3}
   - {fileID: 2360933683143488451, guid: 9ee80949face93d4a82bce9f8acec3bf, type: 3}
