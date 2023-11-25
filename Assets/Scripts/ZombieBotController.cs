@@ -26,7 +26,7 @@ public class ZombieBotController : MonoBehaviour
     private Rigidbody[] ragdollRigidbodies;
     private CharacterController characterController;
 
-    public float maxHealth = 10f;
+    public float maxHealth = 5f;
     private float currentHealth;
     public AudioSource audioSource;
     public AudioClip ZombieHurt;
