@@ -34,6 +34,7 @@ public class ZombieBotController : MonoBehaviour
 
     void Awake()
     {
+        targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
         characterController = GetComponent<CharacterController>();
 

@@ -7,7 +7,7 @@ public class TopViewDropObject : MonoBehaviour
     public GameObject coffinPrefab;
     public GameObject zombiePrefab;
 
-    public float spawnHeightOffset = 3f;
+    public float spawnHeightOffset = 7f;
 
     void Start()
     {
