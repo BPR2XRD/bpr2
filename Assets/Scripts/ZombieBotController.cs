@@ -28,9 +28,13 @@ public class ZombieBotController : MonoBehaviour
 
     public float maxHealth = 5f;
     private float currentHealth;
-    public AudioSource audioSource;
-    public AudioClip ZombieHurt;
     private bool isDead = false;
+
+    private AudioSource attackAudioSource;
+    private float attackSoundCooldown = 2.0f; // 2 seconds cooldown
+    private float lastAttackSoundTime = -1.0f; // Time when last attack sound was played
+
+    private AudioSource hurtAudioSource;
 
     void Awake()
     {
@@ -44,6 +48,9 @@ public class ZombieBotController : MonoBehaviour
         animator = GetComponent<Animator>();
         isWalkingHash = Animator.StringToHash("isWalking");
         isAttackingHash = Animator.StringToHash("isAttacking");
+
+        attackAudioSource = GetComponents<AudioSource>().First(e => e.clip.name == "Zombieattack 1");
+        hurtAudioSource = GetComponents<AudioSource>().First(e => e.clip.name == "ZombieHurt");
 
         DisableRagdoll();
     }
@@ -111,7 +118,7 @@ public class ZombieBotController : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        audioSource.PlayOneShot(ZombieHurt);
+        hurtAudioSource.Play();
         currentHealth -= amount;
         if (currentHealth <= 0 && !isDead)
         {
@@ -134,6 +141,15 @@ public class ZombieBotController : MonoBehaviour
         }
     }
 
+    private void PlayAttackSound()
+    {
+        if (Time.time >= lastAttackSoundTime + attackSoundCooldown && !attackAudioSource.isPlaying)
+        {
+            attackAudioSource.Play();
+            lastAttackSoundTime = Time.time;
+        }
+    }
+
     private void AttackingBehaviour()
     {
         // Calculate the differences in each axis
@@ -147,6 +163,7 @@ public class ZombieBotController : MonoBehaviour
         // Check if the zombie is within the specified proximities
         if (distanceXZ <= xzAttackProximity && deltaY <= yAttackProximity)
         {
+            PlayAttackSound();
             animator.SetBool(isAttackingHash, true); // Trigger attack animation
             // Implement attack logic here
             // Example: Reduce player's health

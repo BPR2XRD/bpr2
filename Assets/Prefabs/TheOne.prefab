@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3246941877441670990, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3246941877441670990, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -19,6 +23,10 @@ PrefabInstance:
     - target: {fileID: 4142738905028784097, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
       propertyPath: m_AllowXRRendering
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5011784391277157705, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5347867720313072414, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -72,6 +80,130 @@ PrefabInstance:
       propertyPath: zombiePrefab
       value: 
       objectReference: {fileID: 3522789485694110868}
+    - target: {fileID: 6591317911305837650, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604315696492239, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.47087502
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604315696492239, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.07065612
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604315696492239, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.000000033079992
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604315975667774, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.26574147
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604315975667774, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.00000028684732
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604315975667774, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.000000070780544
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316034038426, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.016426802
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316034038426, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.044787526
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316034038426, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.083920956
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316571366996, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.016426742
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316571366996, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.04478755
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316571366996, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.08392096
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316730456245, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.3929393
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316730456245, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.0000014198013
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316730456245, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.0000003799796
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316881132460, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.2657412
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316881132460, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.00000023841864
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316881132460, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.00000004656611
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316958949236, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.27080226
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316958949236, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.049725324
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316958949236, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.000000040978193
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316971210050, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.39293963
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316971210050, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.0000021259766
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604316971210050, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.0000003874302
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604317024905991, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.3038768
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604317024905991, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.036873814
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604317024905991, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.17756365
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604317210858219, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.30387637
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604317210858219, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.03687386
+      objectReference: {fileID: 0}
+    - target: {fileID: 7482604317210858219, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.17756344
+      objectReference: {fileID: 0}
     - target: {fileID: 8965585503719987469, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
       propertyPath: m_Name
       value: TheOne
@@ -86,6 +218,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6076162020038379615, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+    - {fileID: 1651093326579469451, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+    - {fileID: 5331800370116752701, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+    - {fileID: 5087660209719482965, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+    - {fileID: 8451566502038480293, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+    - {fileID: 1137310731663288531, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+    - {fileID: 1609600856588071625, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+    - {fileID: 2314334636305888559, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+    - {fileID: 4168150387851998817, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+    - {fileID: 7751216288005041645, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+    - {fileID: 847686185129816807, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+    - {fileID: 6979363427990253668, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -95,7 +238,187 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8965585503719987469, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5666634661309687811}
+    - targetCorrespondingSourceObject: {fileID: 8965585503719987469, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 236266513026791517}
+    - targetCorrespondingSourceObject: {fileID: 6578993139206391392, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6351381058998787671}
+    - targetCorrespondingSourceObject: {fileID: 6177718524754410915, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5891865709517324246}
+    - targetCorrespondingSourceObject: {fileID: 5460863913591764106, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5970106616704333167}
+    - targetCorrespondingSourceObject: {fileID: 6290784564773825578, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5660715792924150285}
+    - targetCorrespondingSourceObject: {fileID: 1070381599825057450, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1858514989811707474}
+    - targetCorrespondingSourceObject: {fileID: 2735591814896288224, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7563898612363809478}
+    - targetCorrespondingSourceObject: {fileID: 3077842780477289607, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4335479499132443595}
+    - targetCorrespondingSourceObject: {fileID: 6246986852551706658, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9113290069027881443}
+    - targetCorrespondingSourceObject: {fileID: 6609901123676191842, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8862700981730408001}
+    - targetCorrespondingSourceObject: {fileID: 7599109295009334227, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3423418727072956091}
+    - targetCorrespondingSourceObject: {fileID: 7827769290773049659, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4032859312497318252}
   m_SourcePrefab: {fileID: 100100000, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+--- !u!1 &524594688879665427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5460863913591764106, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+  m_PrefabInstance: {fileID: 5516732371729667481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5970106616704333167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524594688879665427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c29a3203f0228949a149642a0e501a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthZombie: {fileID: 7269494750917587022}
+--- !u!1 &1672041427987917307 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6609901123676191842, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+  m_PrefabInstance: {fileID: 5516732371729667481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8862700981730408001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672041427987917307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c29a3203f0228949a149642a0e501a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthZombie: {fileID: 7269494750917587022}
+--- !u!1 &1711959102725903353 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6578993139206391392, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+  m_PrefabInstance: {fileID: 5516732371729667481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6351381058998787671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711959102725903353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c29a3203f0228949a149642a0e501a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthZombie: {fileID: 7269494750917587022}
+--- !u!1 &1816345485952051258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6177718524754410915, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+  m_PrefabInstance: {fileID: 5516732371729667481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5891865709517324246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816345485952051258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c29a3203f0228949a149642a0e501a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthZombie: {fileID: 7269494750917587022}
+--- !u!1 &1891124459981053371 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6246986852551706658, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+  m_PrefabInstance: {fileID: 5516732371729667481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9113290069027881443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891124459981053371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c29a3203f0228949a149642a0e501a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthZombie: {fileID: 7269494750917587022}
+--- !u!1 &2000167677221599667 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6290784564773825578, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+  m_PrefabInstance: {fileID: 5516732371729667481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5660715792924150285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000167677221599667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c29a3203f0228949a149642a0e501a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthZombie: {fileID: 7269494750917587022}
+--- !u!1 &2318945264932840610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7827769290773049659, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+  m_PrefabInstance: {fileID: 5516732371729667481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4032859312497318252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318945264932840610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c29a3203f0228949a149642a0e501a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthZombie: {fileID: 7269494750917587022}
+--- !u!1 &2736547520724260426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7599109295009334227, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+  m_PrefabInstance: {fileID: 5516732371729667481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3423418727072956091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2736547520724260426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c29a3203f0228949a149642a0e501a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthZombie: {fileID: 7269494750917587022}
 --- !u!1 &3522789485694110868 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8965585503719987469, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
@@ -213,3 +536,311 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &236266513026791517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522789485694110868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 6e674827ec126634e94a6c25ee182622, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3736800567298007010}
+        m_TargetAssemblyTypeName: ZombieBehavior, Assembly-CSharp
+        m_MethodName: handleMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 85163f74-da4d-48c5-95a9-6c21c7c52ae1
+    m_ActionName: ZombieMovement/Movement[/XInputControllerWindows2/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6031183d-c1b1-4f1d-a1b5-b99af7df618a
+    m_ActionName: ZombieMovement/Run[/XInputControllerWindows2/leftShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3736800567298007010}
+        m_TargetAssemblyTypeName: ZombieBehavior, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8379dc7c-2d35-4e2e-ac5c-c963bac22207
+    m_ActionName: ZombieMovement/Attack[/XInputControllerWindows2/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3736800567298007010}
+        m_TargetAssemblyTypeName: ZombieBehavior, Assembly-CSharp
+        m_MethodName: Scream
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 93322ed3-1476-460d-a8c6-2fe812c8dbf6
+    m_ActionName: ZombieMovement/Scream[/XInputControllerWindows2/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3736800567298007010}
+        m_TargetAssemblyTypeName: ZombieBehavior, Assembly-CSharp
+        m_MethodName: handleMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 85e55a38-a6e4-49fe-9fd6-6984744d482e
+    m_ActionName: ZombieMovement1/Movement[/XInputControllerWindows2/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 623fb878-a1f4-439a-b1da-1bf2d84a509e
+    m_ActionName: ZombieMovement1/Run[/XInputControllerWindows2/leftShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3736800567298007010}
+        m_TargetAssemblyTypeName: ZombieBehavior, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f9e64a3d-5a1a-456b-807c-14cb1f8ce14d
+    m_ActionName: ZombieMovement1/Attack[/XInputControllerWindows2/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3736800567298007010}
+        m_TargetAssemblyTypeName: ZombieBehavior, Assembly-CSharp
+        m_MethodName: Scream
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8ab069e3-ec38-4369-88dc-482ac4293ef7
+    m_ActionName: ZombieMovement1/Scream[/XInputControllerWindows2/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3736800567298007010}
+        m_TargetAssemblyTypeName: ZombieBehavior, Assembly-CSharp
+        m_MethodName: handleMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: aeccbed4-29cd-406a-9aab-6ae7ab68719f
+    m_ActionName: ZombieMovement2/Movement[/XInputControllerWindows2/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5c63db6b-3500-4b4c-be5f-09726c4ee945
+    m_ActionName: ZombieMovement2/Run[/XInputControllerWindows2/leftShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3736800567298007010}
+        m_TargetAssemblyTypeName: ZombieBehavior, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 11608282-be11-47eb-9c22-346a38a7f413
+    m_ActionName: ZombieMovement2/Attack[/XInputControllerWindows2/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3736800567298007010}
+        m_TargetAssemblyTypeName: ZombieBehavior, Assembly-CSharp
+        m_MethodName: Scream
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: aa650b60-b8a2-43c2-a6ea-02159c62d480
+    m_ActionName: ZombieMovement2/Scream[/XInputControllerWindows2/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3736800567298007010}
+        m_TargetAssemblyTypeName: ZombieBehavior, Assembly-CSharp
+        m_MethodName: handleMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6aeea4db-51d8-432e-9c22-7b13a5b263ab
+    m_ActionName: ZombieMovement3/Movement[/XInputControllerWindows2/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 16e358ed-c336-48fb-9432-29ec4557e4c1
+    m_ActionName: ZombieMovement3/Run[/XInputControllerWindows2/leftShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3736800567298007010}
+        m_TargetAssemblyTypeName: ZombieBehavior, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2e1107ef-cfb5-4d3f-b623-b4720eaa9cb8
+    m_ActionName: ZombieMovement3/Attack[/XInputControllerWindows2/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3736800567298007010}
+        m_TargetAssemblyTypeName: ZombieBehavior, Assembly-CSharp
+        m_MethodName: Scream
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: da6c5382-c4fb-46db-84ec-f26b870622a5
+    m_ActionName: ZombieMovement3/Scream[/XInputControllerWindows2/buttonNorth]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: ZombieMovement
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 7965822383416133592}
+--- !u!114 &3736800567298007010 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9175123876208626299, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+  m_PrefabInstance: {fileID: 5516732371729667481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522789485694110868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b020179e0d5c8241a839a63b4303cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &4779898894391149363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1070381599825057450, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+  m_PrefabInstance: {fileID: 5516732371729667481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1858514989811707474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4779898894391149363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c29a3203f0228949a149642a0e501a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthZombie: {fileID: 7269494750917587022}
+--- !u!1 &7366181927121920286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3077842780477289607, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+  m_PrefabInstance: {fileID: 5516732371729667481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4335479499132443595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7366181927121920286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c29a3203f0228949a149642a0e501a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthZombie: {fileID: 7269494750917587022}
+--- !u!1 &7600273658866848889 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2735591814896288224, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+  m_PrefabInstance: {fileID: 5516732371729667481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7563898612363809478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600273658866848889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c29a3203f0228949a149642a0e501a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthZombie: {fileID: 7269494750917587022}
+--- !u!20 &7965822383416133592 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2450828581983982145, guid: 85b269bcd7a9ba1408cb8bd824c883b0, type: 3}
+  m_PrefabInstance: {fileID: 5516732371729667481}
+  m_PrefabAsset: {fileID: 0}
