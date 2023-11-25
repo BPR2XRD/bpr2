@@ -1237,6 +1237,7 @@ GameObject:
   - component: {fileID: 5170156567171166556}
   - component: {fileID: 8737972123516070554}
   - component: {fileID: 8703086893566420030}
+  - component: {fileID: -7107839559433201848}
   m_Layer: 0
   m_Name: ZombieBot
   m_TagString: ZombieBot
@@ -1514,8 +1515,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 125
-  movementSpeed: 0.7
-  xzAttackProximity: 0.85
+  runningOuterProximity: 6
+  xzAttackProximity: 1.32
   yAttackProximity: 1.5
   maxHealth: 5
 --- !u!114 &8703086893566420030
@@ -1531,6 +1532,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dissolveDuration: 3
+--- !u!195 &-7107839559433201848
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4118235081344747638}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &4295877583702935174
 GameObject:
   m_ObjectHideFlags: 0
