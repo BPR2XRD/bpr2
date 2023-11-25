@@ -23,11 +23,15 @@ public class ZombieBehavior : MonoBehaviour
 
     [SerializeField]
     private float animationFinishTime = 0.9f;
+    private PlayerInput playerInput;
+    private int playerIndex;
 
     
 
     private void Awake()
     {
+        playerInput = GetComponent<PlayerInput>();
+        playerIndex = playerInput.playerIndex;
         input = new ZombieControl();
 
         input.ZombieMovement.Movement.performed += ctx =>
@@ -65,7 +69,7 @@ public class ZombieBehavior : MonoBehaviour
         handleRotation();
     }
 
-    void handleRotation()
+    public void handleRotation()
     {
         float rotationSpeed = 100f; // Adjust to your needs
         float rotationThreshold = 0.3f; // Dead zone threshold
@@ -81,7 +85,7 @@ public class ZombieBehavior : MonoBehaviour
             transform.Rotate(Vector3.up * -rotationSpeed * Time.deltaTime);
         }
     }
-    void Attack()
+    public void Attack()
     {
         Debug.Log("Attack button pressed");
         if (!isAttacking && AnimatorHasParameter("isAttacking", animator))
@@ -102,7 +106,7 @@ public class ZombieBehavior : MonoBehaviour
             Debug.Log("Animator does not have the 'isAttacking' parameter");
         }
     }
-    void Scream(){
+    public void Scream(){
         if (!source2.isPlaying)
         {
             source2.PlayOneShot(audioClipScream);
@@ -122,7 +126,7 @@ public class ZombieBehavior : MonoBehaviour
         }
         return false;
     }
-    void handleMovement()
+    public void handleMovement()
     {
         bool isRunning = animator.GetBool(isRunningHash);
         bool isWalking = animator.GetBool(isWalkingHash);
