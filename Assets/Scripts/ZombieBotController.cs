@@ -50,7 +50,7 @@ public class ZombieBotController : MonoBehaviour
         isAttackingHash = Animator.StringToHash("isAttacking");
 
         attackAudioSource = GetComponents<AudioSource>().First(e => e.clip.name == "Zombieattack 1");
-        hurtAudioSource = GetComponents<AudioSource>().First(e => e.clip.name == "Zombie Hurt (Nr. 1 Minecraft Sound) - Sound Effect for editing");
+        hurtAudioSource = GetComponents<AudioSource>().First(e => e.clip.name == "ZombieHurt");
 
         DisableRagdoll();
     }
