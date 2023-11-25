@@ -30,9 +30,11 @@ public class ZombieBotController : MonoBehaviour
     private float currentHealth;
     private bool isDead = false;
 
-    private AudioSource audioSource;
-    //public AudioClip attackAudioClip;
-    public AudioClip hurtAudioClip;
+    private AudioSource attackAudioSource;
+    private float attackSoundCooldown = 2.0f; // 2 seconds cooldown
+    private float lastAttackSoundTime = -1.0f; // Time when last attack sound was played
+
+    private AudioSource hurtAudioSource;
 
     void Awake()
     {
@@ -46,6 +48,9 @@ public class ZombieBotController : MonoBehaviour
         animator = GetComponent<Animator>();
         isWalkingHash = Animator.StringToHash("isWalking");
         isAttackingHash = Animator.StringToHash("isAttacking");
+
+        attackAudioSource = GetComponents<AudioSource>().First(e => e.clip.name == "Zombieattack 1");
+        hurtAudioSource = GetComponents<AudioSource>().First(e => e.clip.name == "Zombie Hurt (Nr. 1 Minecraft Sound) - Sound Effect for editing");
 
         DisableRagdoll();
     }
@@ -113,7 +118,7 @@ public class ZombieBotController : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        //audioSource.PlayOneShot(zombieHurtAudioClip);
+        hurtAudioSource.Play();
         currentHealth -= amount;
         if (currentHealth <= 0 && !isDead)
         {
@@ -136,6 +141,15 @@ public class ZombieBotController : MonoBehaviour
         }
     }
 
+    private void PlayAttackSound()
+    {
+        if (Time.time >= lastAttackSoundTime + attackSoundCooldown && !attackAudioSource.isPlaying)
+        {
+            attackAudioSource.Play();
+            lastAttackSoundTime = Time.time;
+        }
+    }
+
     private void AttackingBehaviour()
     {
         // Calculate the differences in each axis
@@ -149,6 +163,7 @@ public class ZombieBotController : MonoBehaviour
         // Check if the zombie is within the specified proximities
         if (distanceXZ <= xzAttackProximity && deltaY <= yAttackProximity)
         {
+            PlayAttackSound();
             animator.SetBool(isAttackingHash, true); // Trigger attack animation
             // Implement attack logic here
             // Example: Reduce player's health
