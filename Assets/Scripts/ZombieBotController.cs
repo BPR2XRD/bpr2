@@ -11,12 +11,12 @@ public class ZombieBotController : MonoBehaviour
     }
     private ZombieState currentState;
 
-    [SerializeField]
     private Transform targetTransform;
 
     public float rotationSpeed = 125;
     public float movementSpeed = 0.7f;
-    public float attackProximity = 0.85f;
+    public float xzAttackProximity = 0.85f;
+    public float yAttackProximity = 1.5f;
     //public float attackDamage = 10f;
 
     private Animator animator;
@@ -84,9 +84,16 @@ public class ZombieBotController : MonoBehaviour
 
     private void FollowingBehaviour()
     {
+        // Calculate the differences in x and z axis
+        float deltaX = Mathf.Abs(transform.position.x - targetTransform.position.x);
+        float deltaZ = Mathf.Abs(transform.position.z - targetTransform.position.z);
+
+        // Calculate the distance in the XZ plane
+        float distanceXZ = Mathf.Sqrt(deltaX * deltaX + deltaZ * deltaZ);
+
         Vector3 direction = targetTransform.position - transform.position;
         direction.y = 0;
-        if (direction.magnitude > attackProximity) // Check if the zombie is a certain distance away from the player before walking
+        if (distanceXZ > xzAttackProximity) // Check if the zombie is a certain distance away from the player before walking
         {
             direction.Normalize();
             animator.SetBool(isWalkingHash, true); // Set the isWalking parameter to true
@@ -106,7 +113,6 @@ public class ZombieBotController : MonoBehaviour
     {
         audioSource.PlayOneShot(ZombieHurt);
         currentHealth -= amount;
-        Debug.Log("health:" + currentHealth);
         if (currentHealth <= 0 && !isDead)
         {
             EnableRagdoll();
@@ -130,7 +136,16 @@ public class ZombieBotController : MonoBehaviour
 
     private void AttackingBehaviour()
     {
-        if (Vector3.Distance(transform.position, targetTransform.position) <= attackProximity)
+        // Calculate the differences in each axis
+        float deltaX = Mathf.Abs(transform.position.x - targetTransform.position.x);
+        float deltaY = Mathf.Abs(transform.position.y - targetTransform.position.y);
+        float deltaZ = Mathf.Abs(transform.position.z - targetTransform.position.z);
+
+        // Calculate the distance in the XZ plane
+        float distanceXZ = Mathf.Sqrt(deltaX * deltaX + deltaZ * deltaZ);
+
+        // Check if the zombie is within the specified proximities
+        if (distanceXZ <= xzAttackProximity && deltaY <= yAttackProximity)
         {
             animator.SetBool(isAttackingHash, true); // Trigger attack animation
             // Implement attack logic here
