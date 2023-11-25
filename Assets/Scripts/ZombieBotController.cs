@@ -28,9 +28,11 @@ public class ZombieBotController : MonoBehaviour
 
     public float maxHealth = 5f;
     private float currentHealth;
-    public AudioSource audioSource;
-    public AudioClip ZombieHurt;
     private bool isDead = false;
+
+    private AudioSource audioSource;
+    //public AudioClip attackAudioClip;
+    public AudioClip hurtAudioClip;
 
     void Awake()
     {
@@ -111,7 +113,7 @@ public class ZombieBotController : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        audioSource.PlayOneShot(ZombieHurt);
+        //audioSource.PlayOneShot(zombieHurtAudioClip);
         currentHealth -= amount;
         if (currentHealth <= 0 && !isDead)
         {

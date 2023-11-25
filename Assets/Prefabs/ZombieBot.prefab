@@ -1593,7 +1593,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 1.8
   m_Radius: 0.125
-  m_SlopeLimit: 45
+  m_SlopeLimit: 1
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
@@ -1610,13 +1610,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de00b0fd6c6eb7459ae1b1cdeb50a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTransform: {fileID: 0}
   rotationSpeed: 125
   movementSpeed: 0.7
-  attackProximity: 0.85
-  maxHealth: 10
-  audioSource: {fileID: 0}
-  ZombieHurt: {fileID: 0}
+  xzAttackProximity: 0.85
+  yAttackProximity: 1.5
+  maxHealth: 5
+  hurtAudioClip: {fileID: 0}
 --- !u!114 &8703086893566420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
