@@ -14,6 +14,7 @@ public class ZombieBotController : MonoBehaviour
     private ZombieState currentState;
 
     private Transform targetTransform;
+    private PlayerHealth playerHealth;
     private NavMeshAgent navMeshAgent;
     private NavMeshPath navMeshPath;
 
@@ -46,6 +47,7 @@ public class ZombieBotController : MonoBehaviour
     void Awake()
     {
         targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerHealth = targetTransform.GetComponent<PlayerHealth>();
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         navMeshAgent.SetDestination(targetTransform.position);
         navMeshPath = new NavMeshPath();
@@ -164,8 +166,10 @@ public class ZombieBotController : MonoBehaviour
                 navMeshAgent.SetDestination(targetTransform.position);
             }
         }
-        else
+        else if (!playerHealth.isDead)
+        {
             StartAttacking();
+        }
     }
 
     private void StartRunning()
@@ -191,8 +195,10 @@ public class ZombieBotController : MonoBehaviour
                 navMeshAgent.SetDestination(targetTransform.position);
             }
         }
-        else
+        else if (!playerHealth.isDead)
+        {
             StartAttacking();
+        }
     }
 
     public void TakeDamage(int amount)
@@ -220,12 +226,13 @@ public class ZombieBotController : MonoBehaviour
         }
     }
 
-    private void PlayAttackSound()
+    private void AttackAction()
     {
         if (Time.time >= lastAttackSoundTime + attackSoundCooldown && !attackAudioSource.isPlaying)
         {
             attackAudioSource.Play();
             lastAttackSoundTime = Time.time;
+            playerHealth.TakeDamage(5); //reduce player health
         }
     }
 
@@ -249,13 +256,10 @@ public class ZombieBotController : MonoBehaviour
         float distanceXZ = Mathf.Sqrt(deltaX * deltaX + deltaZ * deltaZ);
 
         // Check if the zombie is within the specified proximities
-        if (distanceXZ <= xzAttackProximity && deltaY <= yAttackProximity)
+        if (distanceXZ <= xzAttackProximity && deltaY <= yAttackProximity && !playerHealth.isDead)
         {
-            PlayAttackSound();
+            AttackAction();
             animator.SetBool(isAttackingHash, true); // Trigger attack animation
-            // Implement attack logic here
-            // Example: Reduce player's health
-
             // After attacking, you might want to switch back to Walking or another state
         }
         else
