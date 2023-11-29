@@ -10,9 +10,16 @@ public class TopViewDropObject : MonoBehaviour
     public GameObject zombiePrefab;
     public GameObject barricadePrefab;
     public ToggleGroup toggleGroup;
-    private bool isCoffin = true;
-
+    private bool isCoffinSelected = true;
+    
     public float spawnHeightOffset = 7f;
+
+    public Image coffinImage;
+    public float cooldownCoffin = 5;
+    bool isCooldownCoffin = false;
+    public Image barricadeImage;
+    public float cooldownBarricade = 5;
+    bool isCooldownBarricade = false;
 
     void Start()
     {
@@ -36,7 +43,8 @@ public class TopViewDropObject : MonoBehaviour
 
     void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Mouse.current.leftButton.wasPressedThisFrame &&
+            !EventSystem.current.IsPointerOverGameObject())
         {
             // Check if the number of zombies is less than 40
             if (ObjectSpawner.zombiesCurrentlyOnMap < 40)
@@ -47,19 +55,40 @@ public class TopViewDropObject : MonoBehaviour
                 {
                         Vector3 clickPoint = hit.point;
                         clickPoint.y += spawnHeightOffset;
-                        if (isCoffin)
+                        if (isCoffinSelected && !isCooldownCoffin)
                         {
+                         isCooldownCoffin = true;
+                            coffinImage.fillAmount = 1;
                             GameObject droppedCoffin = Instantiate(coffinPrefab, clickPoint, Quaternion.identity);
                             droppedCoffin.GetComponent<CoffinController>().OnCoffinDropped(zombiePrefab);
                         }
-                        else
+                        else if (!isCoffinSelected && !isCooldownBarricade) //execute code for barricade
                         {
+                        isCooldownBarricade = true;
+                            barricadeImage.fillAmount = 1;
                             Instantiate(barricadePrefab, clickPoint, Quaternion.identity);
                         }
               
                 }
             }
         }
+        SetImageCooldown(ref coffinImage, ref cooldownCoffin, ref isCooldownCoffin);
+        SetImageCooldown(ref barricadeImage, ref cooldownBarricade, ref isCooldownBarricade);
+    }
+
+    private void SetImageCooldown(ref Image image, ref float cooldown, ref bool isCooldown)
+    {
+        if (isCooldown)
+        {
+            image.fillAmount -= 1 / cooldown * Time.deltaTime;
+
+            if (image.fillAmount <=0)
+            {
+                image.fillAmount = 0;
+                isCooldown = false;
+            }
+        }
+
     }
     private void OnToggleValueChanged(Toggle changedToggle)
     {
@@ -68,13 +97,11 @@ public class TopViewDropObject : MonoBehaviour
             // Execute code based on the selected toggle
             if (changedToggle.CompareTag("Coffin"))
             {
-                Debug.Log("Toggle 1 is selected. Execute code for Toggle 1.");
-                isCoffin = true;
+                isCoffinSelected = true;
             }
             else if (changedToggle.CompareTag("Barricade"))
             {
-                Debug.Log("Toggle 2 is selected. Execute code for Toggle 2.");
-                isCoffin = false;
+                isCoffinSelected = false;
             }
         }
     }
