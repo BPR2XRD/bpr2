@@ -15,6 +15,8 @@ public class ZombieBehavior : MonoBehaviour
     ZombieControl input;
 
     Vector2 currentMovement;
+    Rigidbody rigidbody;
+    float force = 10f;
 
     bool movementPressed;
     bool runPressed;
@@ -32,6 +34,7 @@ public class ZombieBehavior : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         playerIndex = playerInput.playerIndex;
+        rigidbody = GetComponent<Rigidbody>();
         input = new ZombieControl();
 
         input.ZombieMovement.Movement.performed += ctx =>
@@ -136,12 +139,15 @@ public class ZombieBehavior : MonoBehaviour
             if (currentMovement.y > 0)
             {
                 // Forward movement
-                transform.Translate(Vector3.forward * Time.deltaTime);
+                //transform.Translate(Vector3.forward * Time.deltaTime);
+                rigidbody.AddForce(Vector3.forward * force);
             }
             else if (currentMovement.y < 0)
             {
                 // Backward movement
-                transform.Translate(Vector3.back * Time.deltaTime);
+                //transform.Translate(Vector3.back * Time.deltaTime);
+                rigidbody.AddForce(Vector3.forward * force);
+
             }
 
             // Set the animations
