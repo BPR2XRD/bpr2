@@ -377,7 +377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnimationSpeed: 2
   GroundHeight: 0
-  LightIntensityMultiplier: 0.537
+  LightIntensityMultiplier: 0.21
   FreezeDecalDisappearance: 0
   DecalRenderinMode: 0
   ClampDecalSideSurface: 0
