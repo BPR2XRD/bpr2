@@ -4,14 +4,15 @@ using UnityEngine.AI;
 
 public class ZombieBotController : MonoBehaviour
 {
-    private enum ZombieState
+    public enum ZombieState
     {
-        Walking,
-        Running,
-        Attacking,
+        AiWalking,
+        AiRunning,
+        AiAttacking,
+        Controlled,
         Ragdoll,
     }
-    private ZombieState currentState;
+    public ZombieState currentState;
 
     private Transform targetTransform;
     private PlayerHealth playerHealth;
@@ -35,14 +36,17 @@ public class ZombieBotController : MonoBehaviour
     private CharacterController characterController;
 
     public float maxHealth = 5f;
+    public float controlledMovementSpeed = 2.0f;
     private float currentHealth;
-    private bool isDead = false;
+    public bool isDead = false;
 
     private AudioSource attackAudioSource;
     private float attackSoundCooldown = 2.0f; // 2 seconds cooldown
     private float lastAttackSoundTime = -1.0f; // Time when last attack sound was played
-
     private AudioSource hurtAudioSource;
+
+    public Vector2 controlledMovementVector;
+    private bool isControlledRunning;
 
     void Awake()
     {
@@ -52,40 +56,38 @@ public class ZombieBotController : MonoBehaviour
         navMeshAgent.SetDestination(targetTransform.position);
         navMeshPath = new NavMeshPath();
 
-        runningOuterProximity = Random.Range(3f, 9f);
-        navMeshAgent.speed = walkingSpeed;
-        navMeshAgent.angularSpeed = rotationSpeed;
-        navMeshAgent.stoppingDistance = xzAttackProximity;
-
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
         characterController = GetComponent<CharacterController>();
 
-        currentHealth = maxHealth;
-        currentState = ZombieState.Walking;
+        attackAudioSource = GetComponents<AudioSource>().First(e => e.clip.name == "Zombieattack 1");
+        hurtAudioSource = GetComponents<AudioSource>().First(e => e.clip.name == "ZombieHurt");
 
         animator = GetComponent<Animator>();
         isWalkingHash = Animator.StringToHash("isWalking");
         isRunningHash = Animator.StringToHash("isRunning");
         isAttackingHash = Animator.StringToHash("isAttacking");
 
-        attackAudioSource = GetComponents<AudioSource>().First(e => e.clip.name == "Zombieattack 1");
-        hurtAudioSource = GetComponents<AudioSource>().First(e => e.clip.name == "ZombieHurt");
+        runningOuterProximity = Random.Range(3f, 9f);
+        currentHealth = maxHealth;
 
-        DisableRagdoll();
+        StartAiWalking();
     }
 
     void Update()
     {
         switch (currentState)
         {
-            case ZombieState.Walking:
-                WalkingBehaviour();
+            case ZombieState.AiWalking:
+                AiWalkingBehaviour();
                 break;
-            case ZombieState.Running:
-                RunningBehaviour();
+            case ZombieState.AiRunning:
+                RunningAiBehaviour();
                 break;
-            case ZombieState.Attacking:
-                AttackingBehaviour();
+            case ZombieState.AiAttacking:
+                AiAttackingBehaviour();
+                break;
+            case ZombieState.Controlled:
+                ControllingBehaviour();
                 break;
             case ZombieState.Ragdoll:
                 RagdollBehaviour();
@@ -98,7 +100,6 @@ public class ZombieBotController : MonoBehaviour
         foreach (var rigidbody in ragdollRigidbodies)
             rigidbody.isKinematic = true;
 
-        navMeshAgent.enabled = true;
         animator.enabled = true;
         characterController.enabled = true;
     }
@@ -143,23 +144,28 @@ public class ZombieBotController : MonoBehaviour
         return true; // Path is mostly straight
     }
 
-    private void StartWalking()
+    public void StartAiWalking()
     {
+        DisableRagdoll();
         animator.SetBool(isAttackingHash, false);
         animator.SetBool(isRunningHash, false);
-        animator.SetBool(isWalkingHash, true);
+        animator.SetBool(isWalkingHash, false);
+        navMeshAgent.enabled = true;
         navMeshAgent.speed = walkingSpeed;
-        currentState = ZombieState.Walking;
+        navMeshAgent.angularSpeed = rotationSpeed;
+        navMeshAgent.stoppingDistance = xzAttackProximity;
+
+        currentState = ZombieState.AiWalking;
     }
 
-    private void WalkingBehaviour()
+    private void AiWalkingBehaviour()
     {
         float distanceToTarget = Vector3.Distance(transform.position, targetTransform.position);
         if (distanceToTarget > navMeshAgent.stoppingDistance)
         {
             if (distanceToTarget > runningOuterProximity && HasClearPath())
             {
-                StartRunning();
+                StartAiRunning();
             }
             else
             {
@@ -168,27 +174,27 @@ public class ZombieBotController : MonoBehaviour
         }
         else if (!playerHealth.isDead)
         {
-            StartAttacking();
+            StartAiAttacking();
         }
     }
 
-    private void StartRunning()
+    private void StartAiRunning()
     {
         animator.SetBool(isAttackingHash, false);
         animator.SetBool(isWalkingHash, true);
         animator.SetBool(isRunningHash, true);
         navMeshAgent.speed = runningSpeed;
-        currentState = ZombieState.Running;
+        currentState = ZombieState.AiRunning;
     }
 
-    private void RunningBehaviour()
+    private void RunningAiBehaviour()
     {
         float distanceToTarget = Vector3.Distance(transform.position, targetTransform.position);
         if (distanceToTarget > navMeshAgent.stoppingDistance)
         {
             if (!(distanceToTarget > runningOuterProximity && HasClearPath()))
             {
-                StartWalking();
+                StartAiWalking();
             }
             else
             {
@@ -197,8 +203,116 @@ public class ZombieBotController : MonoBehaviour
         }
         else if (!playerHealth.isDead)
         {
-            StartAttacking();
+            StartAiAttacking();
         }
+    }
+
+    private void AttackAction()
+    {
+        if (Time.time >= lastAttackSoundTime + attackSoundCooldown && !attackAudioSource.isPlaying)
+        {
+            attackAudioSource.Play();
+            lastAttackSoundTime = Time.time;
+            playerHealth.TakeDamage(5); //reduce player health
+        }
+    }
+
+    private void StartAiAttacking()
+    {
+        animator.SetBool(isRunningHash, false);
+        animator.SetBool(isWalkingHash, false);
+        animator.SetBool(isAttackingHash, true);
+        navMeshAgent.speed = walkingSpeed;
+        currentState = ZombieState.AiAttacking;
+    }
+
+    private void AiAttackingBehaviour()
+    {
+        // Calculate the differences in each axis
+        float deltaX = Mathf.Abs(transform.position.x - targetTransform.position.x);
+        float deltaY = Mathf.Abs(transform.position.y - targetTransform.position.y);
+        float deltaZ = Mathf.Abs(transform.position.z - targetTransform.position.z);
+
+        // Calculate the distance in the XZ plane
+        float distanceXZ = Mathf.Sqrt(deltaX * deltaX + deltaZ * deltaZ);
+
+        // Check if the zombie is within the specified proximities
+        if (distanceXZ <= xzAttackProximity && deltaY <= yAttackProximity && !playerHealth.isDead)
+        {
+            AttackAction();
+            animator.SetBool(isAttackingHash, true); // Trigger attack animation
+            // After AiAttacking, you might want to switch back to AiWalking or another state
+        }
+        else
+            StartAiWalking();
+    }
+
+    public void StartControlling()
+    {
+        animator.SetBool(isRunningHash, false);
+        animator.SetBool(isWalkingHash, false);
+        animator.SetBool(isAttackingHash, false);
+
+        animator.enabled = true;
+        characterController.enabled = true;
+        navMeshAgent.enabled = false;
+
+        currentState = ZombieState.Controlled;
+    }
+
+    private void ControllingBehaviour()
+    {
+        // Calculate the direction the zombie should move in based on input
+        Vector3 moveDirection = transform.forward * controlledMovementVector.y + transform.right * controlledMovementVector.x;
+        moveDirection.Normalize(); // Ensure the movement speed is consistent
+
+        // Apply movement speed
+        moveDirection *= controlledMovementSpeed;
+
+        if (moveDirection.magnitude > 0.1f) // Deadzone to prevent jitter from small inputs
+        {
+            bool isWalking = animator.GetBool(isWalkingHash);
+            bool isRunning = animator.GetBool(isRunningHash);
+
+            // Move the zombie using the CharacterController component
+            characterController.Move(moveDirection * Time.deltaTime);
+
+            // Calculate a target rotation based on the move direction
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+
+            // Slerp to the target rotation at the specified rotation speed
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            // Set the animations
+            if (!isWalking)
+            {
+                animator.SetBool(isWalkingHash, true);
+            }
+            else if (isControlledRunning && !isRunning && isWalking)
+            {
+                animator.SetBool(isRunningHash, true);
+            }
+        }
+        else
+        {
+            // Stop if there's no movement
+            animator.SetBool(isWalkingHash, false);
+            animator.SetBool(isRunningHash, false);
+            isControlledRunning = false;
+        }
+    }
+
+    public void OnControlledRun()
+    {
+        isControlledRunning = true;
+    }
+
+    public void OnControlledAttack()
+    {
+        Debug.Log("Attacked");
+        animator.SetBool(isAttackingHash, true);
+        attackAudioSource.Play();
+        playerHealth.TakeDamage(5);
     }
 
     public void TakeDamage(int amount)
@@ -207,6 +321,7 @@ public class ZombieBotController : MonoBehaviour
         currentHealth -= amount;
         if (currentHealth <= 0 && !isDead)
         {
+            isDead = true;
             EnableRagdoll();
             currentState = ZombieState.Ragdoll;
         }
@@ -224,45 +339,5 @@ public class ZombieBotController : MonoBehaviour
         {
             disolve.enabled = true;
         }
-    }
-
-    private void AttackAction()
-    {
-        if (Time.time >= lastAttackSoundTime + attackSoundCooldown && !attackAudioSource.isPlaying)
-        {
-            attackAudioSource.Play();
-            lastAttackSoundTime = Time.time;
-            playerHealth.TakeDamage(5); //reduce player health
-        }
-    }
-
-    private void StartAttacking()
-    {
-        animator.SetBool(isRunningHash, false);
-        animator.SetBool(isWalkingHash, false);
-        animator.SetBool(isAttackingHash, true);
-        navMeshAgent.speed = walkingSpeed;
-        currentState = ZombieState.Attacking;
-    }
-
-    private void AttackingBehaviour()
-    {
-        // Calculate the differences in each axis
-        float deltaX = Mathf.Abs(transform.position.x - targetTransform.position.x);
-        float deltaY = Mathf.Abs(transform.position.y - targetTransform.position.y);
-        float deltaZ = Mathf.Abs(transform.position.z - targetTransform.position.z);
-
-        // Calculate the distance in the XZ plane
-        float distanceXZ = Mathf.Sqrt(deltaX * deltaX + deltaZ * deltaZ);
-
-        // Check if the zombie is within the specified proximities
-        if (distanceXZ <= xzAttackProximity && deltaY <= yAttackProximity && !playerHealth.isDead)
-        {
-            AttackAction();
-            animator.SetBool(isAttackingHash, true); // Trigger attack animation
-            // After attacking, you might want to switch back to Walking or another state
-        }
-        else
-            StartWalking();
     }
 }

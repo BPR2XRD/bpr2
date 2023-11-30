@@ -27,15 +27,10 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
-        else
-        {
-            Debug.Log("Player took damage. Current Health: " + currentHealth);
-        }
     }
 
     void Die()
     {
-        Debug.Log("Player has died!");
         isDead = true;
     }
 }
