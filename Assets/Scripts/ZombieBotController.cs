@@ -149,7 +149,7 @@ public class ZombieBotController : MonoBehaviour
         DisableRagdoll();
         animator.SetBool(isAttackingHash, false);
         animator.SetBool(isRunningHash, false);
-        animator.SetBool(isWalkingHash, false);
+        animator.SetBool(isWalkingHash, true);
         navMeshAgent.enabled = true;
         navMeshAgent.speed = walkingSpeed;
         navMeshAgent.angularSpeed = rotationSpeed;
@@ -184,6 +184,11 @@ public class ZombieBotController : MonoBehaviour
         animator.SetBool(isWalkingHash, true);
         animator.SetBool(isRunningHash, true);
         navMeshAgent.speed = runningSpeed;
+        navMeshAgent.enabled = true;
+        navMeshAgent.speed = walkingSpeed;
+        navMeshAgent.angularSpeed = rotationSpeed;
+        navMeshAgent.stoppingDistance = xzAttackProximity;
+
         currentState = ZombieState.AiRunning;
     }
 
@@ -222,7 +227,12 @@ public class ZombieBotController : MonoBehaviour
         animator.SetBool(isRunningHash, false);
         animator.SetBool(isWalkingHash, false);
         animator.SetBool(isAttackingHash, true);
+
+        navMeshAgent.enabled = true;
         navMeshAgent.speed = walkingSpeed;
+        navMeshAgent.angularSpeed = rotationSpeed;
+        navMeshAgent.stoppingDistance = xzAttackProximity;
+
         currentState = ZombieState.AiAttacking;
     }
 
@@ -309,10 +319,8 @@ public class ZombieBotController : MonoBehaviour
 
     public void OnControlledAttack()
     {
-        Debug.Log("Attacked");
         animator.SetBool(isAttackingHash, true);
-        attackAudioSource.Play();
-        playerHealth.TakeDamage(5);
+        AttackAction();
     }
 
     public void TakeDamage(int amount)
