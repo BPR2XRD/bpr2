@@ -6,7 +6,7 @@ using Microlight.MicroBar;
 public class PlayerHealth : MonoBehaviour
 {
     public GameObject canvas;
-    public EndSceen endSceen;
+     EndSceen endSceen;
     public int maxHealth = 100;
     public int currentHealth;
     public bool isDead = false;
