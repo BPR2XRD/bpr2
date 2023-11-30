@@ -71,6 +71,8 @@ public class GamepadPlayerController : MonoBehaviour
     {
         if (currentState != GamepadPlayerState.Selecting)
             return;
+        
+        Debug.Log("Browse zombie");
 
         SelectRandomAliveNotControlledZombieBot();
     }
@@ -78,11 +80,11 @@ public class GamepadPlayerController : MonoBehaviour
     private void OnChooseZombieBotSelection()
     {
         if (
-            currentState != GamepadPlayerState.Selecting &&
-            selectedZombieBot != null &&
-            selectedZombieBotController != null &&
-            !selectedZombieBotController.isDead &&
-            selectedZombieBotController.currentState != ZombieBotController.ZombieState.Controlled
+            currentState != GamepadPlayerState.Selecting ||
+            selectedZombieBot == null ||
+            selectedZombieBotController == null ||
+            selectedZombieBotController.isDead ||
+            selectedZombieBotController.currentState == ZombieBotController.ZombieState.Controlled
         )
             return;
 
@@ -125,13 +127,18 @@ public class GamepadPlayerController : MonoBehaviour
 
     private void OnMovePerformed(InputAction.CallbackContext context)
     {
+        var test = context.ReadValue<Vector2>();
+
+
         if (context.control.device != playerInput.devices.FirstOrDefault())
             return;
+        
+        // Debug.Log("Post check movement triggered: " + playerInput.playerIndex + " vector: " + test);
 
         if (currentState != GamepadPlayerState.Playing || selectedZombieBot == null || selectedZombieBotController == null || selectedZombieBotController.isDead)
             return;
         
-        selectedZombieBotController.controlledMovementVector = context.ReadValue<Vector2>();
+        selectedZombieBotController.controlledMovementVector = test;
     }
 
     private void OnRun()
@@ -189,6 +196,7 @@ public class GamepadPlayerController : MonoBehaviour
         else
         {
             currentPerspectiveState = GamepadPlayerPerspectiveState.ThirdPerson;
+            playerInput.SwitchCurrentActionMap("ZombieBotSelection");
             currentState = GamepadPlayerState.Selecting;
             SelectRandomAliveNotControlledZombieBot();
         }

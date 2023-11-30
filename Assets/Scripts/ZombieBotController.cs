@@ -70,6 +70,8 @@ public class ZombieBotController : MonoBehaviour
         runningOuterProximity = Random.Range(3f, 9f);
         currentHealth = maxHealth;
 
+        isDead = false;
+
         StartAiWalking();
     }
 
@@ -272,26 +274,33 @@ public class ZombieBotController : MonoBehaviour
 
     private void ControllingBehaviour()
     {
-        // Calculate the direction the zombie should move in based on input
-        Vector3 moveDirection = transform.forward * controlledMovementVector.y + transform.right * controlledMovementVector.x;
-        moveDirection.Normalize(); // Ensure the movement speed is consistent
+        float rotationSpeed = 100f; // Adjust to your needs
+        float rotationThreshold = 0.3f; // Dead zone threshold
 
-        // Apply movement speed
-        moveDirection *= controlledMovementSpeed;
+        if (controlledMovementVector.x > rotationThreshold)
+        {
+            // Rotate to the right
+            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+        }
+        else if (controlledMovementVector.x < -rotationThreshold)
+        {
+            // Rotate to the left
+            transform.Rotate(Vector3.up * -rotationSpeed * Time.deltaTime);
+        }
 
-        if (moveDirection.magnitude > 0.1f) // Deadzone to prevent jitter from small inputs
+        if (controlledMovementVector.y != 0)
         {
             bool isWalking = animator.GetBool(isWalkingHash);
             bool isRunning = animator.GetBool(isRunningHash);
 
+            Vector3 moveDirection = transform.forward * controlledMovementVector.y + transform.right * controlledMovementVector.x;
+            moveDirection.Normalize(); // Ensure the movement speed is consistent
+
+            // Apply movement speed
+            //moveDirection *= controlledMovementSpeed;
+
             // Move the zombie using the CharacterController component
             characterController.Move(moveDirection * Time.deltaTime);
-
-            // Calculate a target rotation based on the move direction
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-
-            // Slerp to the target rotation at the specified rotation speed
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
             // Set the animations
             if (!isWalking)
@@ -310,6 +319,42 @@ public class ZombieBotController : MonoBehaviour
             animator.SetBool(isRunningHash, false);
             isControlledRunning = false;
         }
+
+        // // Calculate the direction the zombie should move in based on input
+        // Vector3 moveDirection = transform.forward * controlledMovementVector.y + transform.right * controlledMovementVector.x;
+        // moveDirection.Normalize(); // Ensure the movement speed is consistent
+
+        // // Apply movement speed
+        // moveDirection *= controlledMovementSpeed;
+
+        // if (moveDirection.magnitude > 0.1f) // Deadzone to prevent jitter from small inputs
+        // {
+        //     bool isWalking = animator.GetBool(isWalkingHash);
+        //     bool isRunning = animator.GetBool(isRunningHash);
+
+        //     // Move the zombie using the CharacterController component
+        //     characterController.Move(moveDirection * Time.deltaTime);
+
+        //     float rotationAmount = rotationSpeed * Time.deltaTime;
+        //     transform.Rotate(0, rotationAmount, 0, Space.Self);
+
+        //     // Set the animations
+        //     if (!isWalking)
+        //     {
+        //         animator.SetBool(isWalkingHash, true);
+        //     }
+        //     else if (isControlledRunning && !isRunning && isWalking)
+        //     {
+        //         animator.SetBool(isRunningHash, true);
+        //     }
+        // }
+        // else
+        // {
+        //     // Stop if there's no movement
+        //     animator.SetBool(isWalkingHash, false);
+        //     animator.SetBool(isRunningHash, false);
+        //     isControlledRunning = false;
+        // }
     }
 
     public void OnControlledRun()
