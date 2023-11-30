@@ -9,10 +9,12 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public bool isDead = false;
     private MicroBar healthBar;
+    private AudioSource audioSource;
 
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         currentHealth = maxHealth;
         isDead = false;
         try
@@ -47,6 +49,8 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        if (!audioSource.isPlaying)
+              audioSource.Play();
         if (healthBar != null)
             healthBar.UpdateHealthBar(currentHealth);
 
