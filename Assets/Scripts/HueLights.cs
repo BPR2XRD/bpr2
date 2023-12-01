@@ -6,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using Light = Q42.HueApi.Light;
 using Q42.HueApi.ColorConverters.Original;
