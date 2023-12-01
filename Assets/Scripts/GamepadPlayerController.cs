@@ -51,8 +51,6 @@ public class GamepadPlayerController : MonoBehaviour
     {
         if (currentState != GamepadPlayerState.Selecting)
             return;
-        
-        Debug.Log("Browse zombie");
 
         SelectRandomAliveNotControlledZombieBot();
     }
