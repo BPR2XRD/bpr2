@@ -26,7 +26,7 @@ public class ObjectSpawner : MonoBehaviour
         while (true) // Infinite loop
         {
             // Wait for 10 seconds
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(5);
 
             // Code to execute after the delay
             SpawnZombiesIfNecessary();
