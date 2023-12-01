@@ -6,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using Light = Q42.HueApi.Light;
 using Q42.HueApi.ColorConverters.Original;
@@ -229,12 +228,6 @@ public class HueLights : MonoBehaviour
         TryToStart();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     async void TryToStart()
     {
         await InitializeHue();
@@ -246,7 +239,7 @@ public class HueLights : MonoBehaviour
         //await ChangeLights(Color.white);
         await TurnOff();
         //await InitialScene(new Color(0.212f, 0.471f, 0)); //0.212f, 0.471f, 0 - Green
-        await InitialScene(new Color(0, 0.153f, 0.478f)); //0, 0.153f, 0.478f - Blue
+        await InitialScene(GetColor(TheColors.Blue)); 
     }
 
     public Color GetColor(TheColors color)
@@ -257,7 +250,7 @@ public class HueLights : MonoBehaviour
             TheColors.Green => new Color(0.627f, 1, 0.443f),
             TheColors.Blue => new Color(0, 0.153f, 0.478f),
             TheColors.Yellow => new Color(0.667f, 0.69f, 0.322f),
-            TheColors.Cyan => new Color(0, 1, 0.933f),
+            TheColors.Cyan => new Color(0, 1, 0.388f),
             TheColors.Violet => new Color(0.961f, 0.192f, 0.855f),
             TheColors.Orange => new Color(1, 0.757f, 0),
             TheColors.Pink => new Color(1, 0.573f, 0.847f),

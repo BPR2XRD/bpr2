@@ -22,7 +22,6 @@ public class GamepadPlayerController : MonoBehaviour
     private GamepadPlayerPerspectiveState currentPerspectiveState;
 
     private PlayerInput playerInput;
-    private GamepadInputActions gamepadInputActions;
     private Camera camera;
 
     private GameObject? selectedZombieBot = null;
@@ -39,11 +38,6 @@ public class GamepadPlayerController : MonoBehaviour
     private Quaternion perspectiveTransitionStartRotation;
     private Quaternion perspectiveTransitionEndRotation;
 
-    private void Awake()
-    {
-        gamepadInputActions = new GamepadInputActions();
-    }
-
     void Start()
     {
         currentState = GamepadPlayerState.Selecting;
@@ -53,26 +47,10 @@ public class GamepadPlayerController : MonoBehaviour
         camera = GetComponentInChildren<Camera>();
     }
 
-    private void OnEnable()
-    {
-        var moveAction = gamepadInputActions.ZombieBotGameplay.Move;
-        moveAction.performed += OnMovePerformed;
-        moveAction.Enable();
-    }
-
-    private void OnDisable()
-    {
-        var moveAction = gamepadInputActions.ZombieBotGameplay.Move;
-        moveAction.performed -= OnMovePerformed;
-        moveAction.Disable();
-    }
-
     private void OnNewZombieBotSelection()
     {
         if (currentState != GamepadPlayerState.Selecting)
             return;
-        
-        Debug.Log("Browse zombie");
 
         SelectRandomAliveNotControlledZombieBot();
     }
@@ -125,20 +103,9 @@ public class GamepadPlayerController : MonoBehaviour
         perspectiveTransitionTimer = 0f;
     }
 
-    private void OnMovePerformed(InputAction.CallbackContext context)
+    public void OnMove(InputValue inputValue)
     {
-        var test = context.ReadValue<Vector2>();
-
-
-        if (context.control.device != playerInput.devices.FirstOrDefault())
-            return;
-        
-        // Debug.Log("Post check movement triggered: " + playerInput.playerIndex + " vector: " + test);
-
-        if (currentState != GamepadPlayerState.Playing || selectedZombieBot == null || selectedZombieBotController == null || selectedZombieBotController.isDead)
-            return;
-        
-        selectedZombieBotController.controlledMovementVector = test;
+        selectedZombieBotController.controlledMovementVector = inputValue.Get<Vector2>();
     }
 
     private void OnRun()
