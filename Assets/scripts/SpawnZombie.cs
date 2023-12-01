@@ -1,7 +1,7 @@
 using System;
+using System.Linq;
 using System.Collections;
 using UnityEngine;
-// using Random = UnityEngine.Random;
 
 public class ObjectSpawner : MonoBehaviour
 {
@@ -18,55 +18,38 @@ public class ObjectSpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnWaves());
+        StartCoroutine(DelayedExecution());
     }
 
-    private IEnumerator SpawnWaves()
+    IEnumerator DelayedExecution()
     {
-        while (true) // Infinite loop for continuous waves
+        while (true) // Infinite loop
         {
-            float elapsedTime = 0f;
-        float currentSpawnInterval = initialSpawnInterval;
-        zombiesCurrentlyOnMap = 0; // Reset zombie count at the start of each wave
+            // Wait for 10 seconds
+            yield return new WaitForSeconds(10);
 
-        while (elapsedTime < waveDuration)
-        {
-            if (zombiesCurrentlyOnMap < 40)
-            {
-                foreach (Transform spawnPoint in spawnPoints)
-                {
-                    InstantiateZombie(spawnPoint);
-                }
-            }
-
-            // Wait for the next spawn interval or until zombie count drops to 30 or less
-            while (zombiesCurrentlyOnMap >= 40)
-            {
-                yield return null; // Wait indefinitely
-            }
-
-            yield return new WaitForSeconds(currentSpawnInterval);
-
-            elapsedTime += currentSpawnInterval;
-            if (elapsedTime % reductionFrequency < currentSpawnInterval && 
-                currentSpawnInterval > minSpawnInterval)
-            {
-                currentSpawnInterval -= intervalReduction;
-            }
+            // Code to execute after the delay
+            SpawnZombiesIfNecessary();
         }
+    }
 
-            // Super attack: spawn 30 zombies at the end of the wave
-            if (zombiesCurrentlyOnMap < 40)
-        {
-            int zombiesToSpawn = Math.Min(30, 40 - zombiesCurrentlyOnMap); // Spawn up to the limit of 40
-            for (int i = 0; i < zombiesToSpawn; i++)
+    void SpawnZombiesIfNecessary()
+    {
+        GameObject[] aliveZombieBotGameObjects = GameObject
+            .FindGameObjectsWithTag("ZombieBot")
+            .Where(zombieBot =>
             {
-                Transform selectedSpawnPoint = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
-                InstantiateZombie(selectedSpawnPoint);
-            }
-        }
+                var zombieBotController = zombieBot.GetComponent<ZombieBotController>();
+                return zombieBotController != null && !zombieBotController.isDead;
+            })
+            .ToArray();
 
-        yield return new WaitForSeconds(breakDuration); // Break between waves
+        if (aliveZombieBotGameObjects.Length < 40)
+        {
+            foreach (Transform spawnPoint in spawnPoints)
+            {
+                InstantiateZombie(spawnPoint);
+            }
         }
     }
 
