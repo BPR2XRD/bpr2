@@ -34,6 +34,8 @@ public class FadeScreen : MonoBehaviour
 
     public IEnumerator FadeRoutine(float aphaIn, float aphaOut)
     {
+        if (GameData.isPlayerDead)
+            color = Color.red;
         float timer = 0;
         while (timer <= duration)
         {
