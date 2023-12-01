@@ -3570,7 +3570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 6953845599233659160}
-  playerText: {fileID: 0}
+  playerText: {fileID: 1103247493}
   WinSprite: {fileID: 21300000, guid: ad5eefa4b6497a84da815cbea156cdf1, type: 3}
   LoseSprite: {fileID: 21300000, guid: ce5b9c790e95d0b49825f04b342b964e, type: 3}
   image: {fileID: 5419797101974495640}
