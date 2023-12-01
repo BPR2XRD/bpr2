@@ -66,6 +66,6 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
         GameData.isPlayerDead = isDead;
-        SceneManager.LoadScene("EndScene");
+        SceneManager.LoadSceneAsync("EndScene");
     }
 }
