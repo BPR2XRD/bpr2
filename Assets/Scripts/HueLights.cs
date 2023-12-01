@@ -61,7 +61,7 @@ public class HueLights : MonoBehaviour
             await client.SendCommandAsync(command, lightsToAlter);
         }
     }
-    public async Task ChangeLights(Color color, int transTime = 0)
+    public async Task ChangeLights(Color color, int transTime = 0, Effect effect = Effect.None, Alert alert = Alert.None)
     {
         if (client == null || !lights.Any())
         {
@@ -72,7 +72,8 @@ public class HueLights : MonoBehaviour
         command.TurnOn().SetColor(lightColor);
         command.Brightness = 254; //Max,  (0-254)
         command.TransitionTime = new TimeSpan(hours: 0, minutes: 0, seconds: transTime);
-        command.Effect = Effect.None;
+        command.Effect = effect;
+        command.Alert = alert;
         await client.SendCommandAsync(command);
 
     }
@@ -226,6 +227,14 @@ public class HueLights : MonoBehaviour
     {
         //RegisterAppWithHueBridge();
         TryToStart();
+    }
+
+    public async Task PlayerDead()
+    {
+        await ChangeLights(GetColor(TheColors.Red)); 
+        await ChangeLights(GetColor(TheColors.Red), alert: Alert.Once); //flash red
+        await Task.Delay(3000);
+        await ChangeLights(GetColor(TheColors.Blue), transTime:5, alert: Alert.Once);// return to normal
     }
 
     async void TryToStart()

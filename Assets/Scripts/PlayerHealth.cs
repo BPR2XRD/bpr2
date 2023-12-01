@@ -4,6 +4,7 @@ using UnityEngine;
 using Microlight.MicroBar;
 using System;
 using UnityEngine.SceneManagement;
+using Q42.HueApi;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -13,12 +14,14 @@ public class PlayerHealth : MonoBehaviour
     public FadeScreen fadeScreen;
     private MicroBar healthBar;
     private AudioSource audioSource;
+    private HueLights lights;
 
     void Start()
     {    
         audioSource = GetComponent<AudioSource>();
         currentHealth = maxHealth;
         isDead = false;
+        lights = GameObject.FindGameObjectWithTag("Manager").GetComponent<HueLights>();
         GameData.isPlayerDead = isDead;
         try
         {
@@ -69,6 +72,8 @@ public class PlayerHealth : MonoBehaviour
         GameData.isPlayerDead = isDead;
         if(fadeScreen  != null)
             fadeScreen.FadeOut();
+        if (lights != null)
+            lights.PlayerDead();
         SceneManager.LoadSceneAsync("EndScene");
     }
 }

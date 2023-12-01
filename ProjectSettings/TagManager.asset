@@ -16,6 +16,7 @@ TagManager:
   - HealthBar
   - WhitePistol
   - GamepadPlayer
+  - Manager
   layers:
   - Default
   - TransparentFX
