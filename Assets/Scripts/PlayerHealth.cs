@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public bool isDead = false;
+    public FadeScreen fadeScreen;
     private MicroBar healthBar;
     private AudioSource audioSource;
 
@@ -66,6 +67,8 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
         GameData.isPlayerDead = isDead;
+        if(fadeScreen  != null)
+            fadeScreen.FadeOut();
         SceneManager.LoadSceneAsync("EndScene");
     }
 }
