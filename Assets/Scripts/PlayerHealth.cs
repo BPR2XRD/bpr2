@@ -30,6 +30,11 @@ public class PlayerHealth : MonoBehaviour
         endScreen2 = canvas2.GetComponent<EndSceen>();
         // endScreen3 = canvas3.GetComponent<EndSceen>();
         
+          GameObject gamepadPlayer = GameObject.Find("GamepadPlayer");
+        if (gamepadPlayer != null) {
+            canvas3 = gamepadPlayer.gameObject; // Assuming the GamepadPlayer script is attached to the canvas GameObject
+            endScreen3 = canvas3.GetComponent<EndSceen>();
+        }
 
         audioSource = GetComponent<AudioSource>();
         currentHealth = maxHealth;
@@ -79,10 +84,16 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("PlayersCamera: " + PlayersCamera);
             Debug.Log("TopViewCamera: " + TopViewCamera);
 
-            canvas1.SetActive(true);
+            // canvas1.SetActive(true);
             canvas2.SetActive(true);
             // endScreen1.Lose();
             endScreen2.Lose();
+             if (canvas3 != null && endScreen3 != null)
+            {
+                canvas3.SetActive(true);
+                endScreen3.Lose();
+            }
+            
             Locomotion.SetActive(false);
 
             Die();
