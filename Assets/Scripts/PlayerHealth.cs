@@ -81,7 +81,7 @@ public class PlayerHealth : MonoBehaviour
 
             canvas1.SetActive(true);
             canvas2.SetActive(true);
-            endScreen1.Lose();
+            // endScreen1.Lose();
             endScreen2.Lose();
             Locomotion.SetActive(false);
 
