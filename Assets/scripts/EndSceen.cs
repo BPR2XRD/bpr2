@@ -9,10 +9,12 @@ public class EndSceen : MonoBehaviour
 {
     
     public TextMeshProUGUI text;
+    public TextMeshProUGUI playerText;
     public Sprite WinSprite;
     public Sprite LoseSprite;
 
     public Image image;
+    public Image image2;
     public AudioSource Source;
     public AudioClip LoosingClip;
     public AudioClip WinningClip;
@@ -21,14 +23,23 @@ public class EndSceen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (GameData.isPlayerDead)
+        {
+            Lose();
+        }
+        else
+        {
+            Win();
+        }
     }
     public void Win(){
         Source.Stop();
         Source.PlayOneShot(WinningClip);
 
         text.text = "Wow, Ghost Hunter won. Congratulations!!!";
+        playerText.SetText("You survived");
         image.GetComponent<Image> ().sprite = WinSprite;
+        image2.GetComponent<Image> ().sprite = WinSprite;
     }
 
     public void Lose(){
@@ -36,11 +47,8 @@ public class EndSceen : MonoBehaviour
         Source.PlayOneShot(LoosingClip);
 
         text.text = "O_O, Ghost Hunter was defeated";
+        playerText.SetText("You Died");
         image.GetComponent<Image> ().sprite = LoseSprite;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        image2.GetComponent<Image> ().sprite = LoseSprite;
     }
 }
