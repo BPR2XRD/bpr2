@@ -268,7 +268,6 @@ public class ZombieBotController : MonoBehaviour
         animator.enabled = true;
         characterController.enabled = true;
         navMeshAgent.enabled = false;
-
         currentState = ZombieState.Controlled;
     }
 

@@ -1,7 +1,10 @@
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using Color = UnityEngine.Color;
 
 public class GamepadPlayerController : MonoBehaviour
 {
@@ -187,10 +190,24 @@ public class GamepadPlayerController : MonoBehaviour
             {
                 toBeSelectedZombieBot = aliveZombieBotGameObjects[Random.Range(0, aliveZombieBotGameObjects.Length)];
             } while (toBeSelectedZombieBot == lastSelectedZombieBot); // Ensure toBeSelectedZombieBot is different from the last one
-
+            if (lastSelectedZombieBot != null)
+                lastSelectedZombieBot.GetComponent<Outline>().enabled = false;
             lastSelectedZombieBot = toBeSelectedZombieBot;
             selectedZombieBot = toBeSelectedZombieBot;
-            selectedZombieBotController = toBeSelectedZombieBot.GetComponent<ZombieBotController>();
+            selectedZombieBotController = toBeSelectedZombieBot.GetComponent<ZombieBotController>();       
+            var outline = selectedZombieBot.GetComponent<Outline>();
+            outline.OutlineMode = Outline.Mode.OutlineAll;
+            Debug.Log(playerInput.playerIndex + "Giovani");
+            outline.OutlineColor = playerInput.playerIndex switch
+                 {
+                     0 => Color.red,
+                     1 => Color.green,
+                     2 => Color.yellow,
+                     3 => Color.blue,
+                     _ => Color.magenta,
+                 };
+            outline.OutlineWidth = 9f;
+            outline.enabled = true;
         }
         else if (aliveZombieBotGameObjects.Length == 1)
         {
@@ -203,6 +220,10 @@ public class GamepadPlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (selectedZombieBot != null && selectedZombieBot.TryGetComponent(out Outline outline))
+        { 
+            outline.enabled=false;
+        }
         // If gamepad gets disconnected and the controlled zombie bot is still alive set the state of the zombie bot to ai walking
         if (
             currentState == GamepadPlayerState.Playing &&
@@ -210,6 +231,8 @@ public class GamepadPlayerController : MonoBehaviour
             selectedZombieBotController != null &&
             !selectedZombieBotController.isDead
         )
+        {
             selectedZombieBotController.StartAiWalking();
+        }
     }
 }
