@@ -234,7 +234,14 @@ public class HueLights : MonoBehaviour
         await ChangeLights(GetColor(TheColors.Red)); 
         await ChangeLights(GetColor(TheColors.Red), alert: Alert.Once); //flash red
         await Task.Delay(3000);
-        await ChangeLights(GetColor(TheColors.Blue), transTime:5, alert: Alert.Once);// return to normal
+        await ChangeLights(GetColor(TheColors.Blue), transTime:5);// return to normal
+    }
+
+    public async Task PlayerWin()
+    {
+        await ChangeLights(GetColor(TheColors.Cyan));
+        await Task.Delay(3000);
+        await ChangeLights(GetColor(TheColors.Blue), transTime: 5);// return to normal
     }
 
     async void TryToStart()

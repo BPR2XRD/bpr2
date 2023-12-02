@@ -191,7 +191,12 @@ public class GamepadPlayerController : MonoBehaviour
                 toBeSelectedZombieBot = aliveZombieBotGameObjects[Random.Range(0, aliveZombieBotGameObjects.Length)];
             } while (toBeSelectedZombieBot == lastSelectedZombieBot); // Ensure toBeSelectedZombieBot is different from the last one
             if (lastSelectedZombieBot != null)
-                lastSelectedZombieBot.GetComponent<Outline>().enabled = false;
+            {
+                var zombieBotController = lastSelectedZombieBot.GetComponent<ZombieBotController>();
+                if (!zombieBotController.isDead && zombieBotController.currentState  != ZombieBotController.ZombieState.Controlled) 
+                    lastSelectedZombieBot.GetComponent<Outline>().enabled = false;
+
+            }
             lastSelectedZombieBot = toBeSelectedZombieBot;
             selectedZombieBot = toBeSelectedZombieBot;
             selectedZombieBotController = toBeSelectedZombieBot.GetComponent<ZombieBotController>();       
