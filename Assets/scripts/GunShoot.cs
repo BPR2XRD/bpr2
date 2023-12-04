@@ -114,6 +114,7 @@ public class GunShoot : MonoBehaviour
     {
         audioSource.PlayOneShot(gunFireSound);
         currentAmmo--;
+        if (currentAmmo < 0) currentAmmo = 0; // prevent negative values
         ammoText.SetText(currentAmmo.ToString()); //Change ammo indicator
 
         if (muzzleFlashPrefab)
