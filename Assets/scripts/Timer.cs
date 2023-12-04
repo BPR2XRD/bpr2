@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
-    public TextMeshProUGUI timerText1; // Assign this from the Inspector
+    private TextMeshPro timerText_pist;
     public TextMeshProUGUI timerText2;
     // public TextMeshProUGUI timerText3;
     public List<TextMeshProUGUI> timerTexts;
@@ -14,50 +14,66 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
-    timerTexts = new List<TextMeshProUGUI>();
+        timerTexts = new List<TextMeshProUGUI>();
 
-    if (timerText1 == null || timerText2 == null) 
-    {
-        Debug.LogError("TimerText is not assigned!");
-        return;
-    }
-
-    GameObject[] gamepadCanvases = GameObject.FindGameObjectsWithTag("GamepadCanvas");
-    foreach (GameObject canvas in gamepadCanvases)
-    {
-        // Assuming the TextMeshPro component is on the first child of the canvas
-        if (canvas.transform.childCount > 0)
+        if (timerText2 == null) 
         {
-            TextMeshProUGUI textComponent = canvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            if (textComponent != null)
+            Debug.LogError("TimerText is not assigned!");
+            return;
+        }
+
+        GameObject[] gamepadCanvases = GameObject.FindGameObjectsWithTag("GamepadCanvas");
+        foreach (GameObject canvas in gamepadCanvases)
+        {
+            // Assuming the TextMeshPro component is on the first child of the canvas
+            if (canvas.transform.childCount > 0)
             {
-                timerTexts.Add(textComponent);
+                TextMeshProUGUI textComponent = canvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                if (textComponent != null)
+                {
+                    timerTexts.Add(textComponent);
+                }
+                else
+                {
+                    Debug.LogWarning("TextMeshProUGUI component not found on child of GameObject: " + canvas.name);
+                }
             }
             else
             {
-                Debug.LogWarning("TextMeshProUGUI component not found on child of GameObject: " + canvas.name);
+                Debug.LogWarning("GameObject with tag 'GamepadCanvas' has no children: " + canvas.name);
             }
         }
-        else
+
+        remainingTime = 360f; // Set to 6 minutes in seconds
+        StartCoroutine(UpdateTimer());
+    }
+    private void Update()
+    {
+        try
         {
-            Debug.LogWarning("GameObject with tag 'GamepadCanvas' has no children: " + canvas.name);
+            //timer on pistol on Update, as to not mess with Coroutine when the controller disconnects
+            if (timerText_pist == null)
+            {
+                timerText_pist = GameObject.FindGameObjectWithTag("TimerText").GetComponent<TextMeshPro>();
+                timerText_pist.SetText(FormatTime(remainingTime));
+            }
+            else
+            {
+                timerText_pist.SetText(FormatTime(remainingTime));
+            }
         }
-    }
+        catch { }
 
-    remainingTime = 360f; // Set to 6 minutes in seconds
-    StartCoroutine(UpdateTimer());
     }
-
     private IEnumerator UpdateTimer()
     {
         while (remainingTime > 0)
         {
             remainingTime -= Time.deltaTime;
-            timerText1.text = FormatTime(remainingTime);
-            timerText2.text = FormatTime(remainingTime);
+            timerText2.SetText(FormatTime(remainingTime));
             foreach (TextMeshProUGUI text in timerTexts)
             {
-                text.text = FormatTime(remainingTime);
+                text.SetText(FormatTime(remainingTime));
             }
             yield return null; // Wait until the next frame
         }

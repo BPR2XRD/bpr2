@@ -18,6 +18,7 @@ TagManager:
   - GamepadPlayer
   - Manager
   - GamepadCanvas
+  - TimerText
   layers:
   - Default
   - TransparentFX

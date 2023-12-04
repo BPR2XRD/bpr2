@@ -31,7 +31,6 @@ public class PlayerHealth : MonoBehaviour
         }
         catch (Exception)
         {
-            Debug.Log("Left Pistol not initialized");
         }
     }
 
@@ -46,7 +45,6 @@ public class PlayerHealth : MonoBehaviour
             }
             catch (Exception)
             {
-                Debug.Log("Left Pistol not initialized");
             }
         }
 
