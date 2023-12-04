@@ -72,6 +72,20 @@ public class GamepadPlayerController : MonoBehaviour
         playerInput.SwitchCurrentActionMap("ZombieBotGameplay");
         selectedZombieBotController.StartControlling();
         currentState = GamepadPlayerState.Playing;
+        if ( TryGetComponent(out Outline outline))
+        {
+            outline.enabled = true;
+            outline.OutlineColor = playerInput.playerIndex switch
+            {
+                0 => Color.red,
+                1 => Color.green,
+                2 => Color.yellow,
+                3 => Color.blue,
+                _ => Color.magenta,
+            };
+        }
+        OnTogglePerspective(); //transition to First-person after selecting
+
     }
 
     private void OnTogglePerspective()
@@ -85,11 +99,12 @@ public class GamepadPlayerController : MonoBehaviour
 
         if (currentPerspectiveState == GamepadPlayerPerspectiveState.FirstPerson)
         {
+            ShowHead();
             // Transition to Third-Person
             currentPerspectiveState = GamepadPlayerPerspectiveState.TransitioningToThirdPerson;
             perspectiveTransitionStartPosition = camera.transform.position;
             perspectiveTransitionStartRotation = camera.transform.rotation;
-            perspectiveTransitionEndPosition = selectedZombieBot.transform.position - selectedZombieBot.transform.forward * 10 + Vector3.up * 5;
+            perspectiveTransitionEndPosition = selectedZombieBot.transform.position - selectedZombieBot.transform.forward * 7 + Vector3.up * 5;
             perspectiveTransitionEndRotation = Quaternion.LookRotation(selectedZombieBot.transform.position - perspectiveTransitionEndPosition);
         }
         else
@@ -142,6 +157,10 @@ public class GamepadPlayerController : MonoBehaviour
                 if (perspectiveTransitionTimer >= perspectiveTransitionDuration)
                 {
                     currentPerspectiveState = (currentPerspectiveState == GamepadPlayerPerspectiveState.TransitioningToFirstPerson) ? GamepadPlayerPerspectiveState.FirstPerson : GamepadPlayerPerspectiveState.ThirdPerson;
+                    if (currentPerspectiveState == GamepadPlayerPerspectiveState.FirstPerson)
+                    {
+                        HideHead();
+                    }
                 }
             }
             else if (currentPerspectiveState == GamepadPlayerPerspectiveState.FirstPerson)
@@ -154,7 +173,7 @@ public class GamepadPlayerController : MonoBehaviour
             else if (currentPerspectiveState == GamepadPlayerPerspectiveState.ThirdPerson)
             {
                 // Third-person camera logic
-                Vector3 desiredPosition = selectedZombieBot.transform.position - selectedZombieBot.transform.forward * 10 + Vector3.up * 5;
+                Vector3 desiredPosition = selectedZombieBot.transform.position - selectedZombieBot.transform.forward * 7 + Vector3.up * 5;
                 Vector3 smoothedPosition = Vector3.Lerp(camera.transform.position, desiredPosition, cameraPositioningSmoothFactor * Time.deltaTime);
                 camera.transform.position = smoothedPosition;
 
@@ -222,6 +241,33 @@ public class GamepadPlayerController : MonoBehaviour
             selectedZombieBotController = aliveZombieBotGameObjects[0].GetComponent<ZombieBotController>();
         }
     }
+
+    private void ShowHead()
+    {
+        var zombie = selectedZombieBot.transform.Find("Head");
+        zombie.gameObject.layer = LayerMask.NameToLayer("Default");
+        camera.cullingMask |= 1 << LayerMask.NameToLayer(GetZombieLayer(playerInput.playerIndex));
+    }
+
+    private void HideHead()
+    {
+        var zombie = selectedZombieBot.transform.Find("Head");
+        zombie.gameObject.layer = LayerMask.NameToLayer(GetZombieLayer(playerInput.playerIndex));
+        camera.cullingMask &= ~(1 << LayerMask.NameToLayer(GetZombieLayer(playerInput.playerIndex)));
+    }
+
+    private string GetZombieLayer(int index)
+    {
+       return index switch
+                 {
+                     0 => "ZombieHead1",
+                     1 => "ZombieHead2",
+                     2 => "ZombieHead3",
+                     3 => "ZombieHead4",
+                     _ => "ZombieHead1",
+                 };
+}
+
 
     private void OnDestroy()
     {
