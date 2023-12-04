@@ -64,9 +64,10 @@ public class TopViewDropObject : MonoBehaviour
                         }
                         else if (!isCoffinSelected && !isCooldownBarricade) //execute code for barricade
                         {
-                        isCooldownBarricade = true;
-                            barricadeImage.fillAmount = 1;
-                            Instantiate(barricadePrefab, clickPoint, Quaternion.identity);
+                            isCooldownBarricade = true;
+                                barricadeImage.fillAmount = 1;
+                            var tmpBar =    Instantiate(barricadePrefab, clickPoint, Quaternion.identity);
+                        Destroy(tmpBar, 20f);
                         }
               
                 }
