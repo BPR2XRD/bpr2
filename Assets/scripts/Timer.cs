@@ -10,10 +10,14 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timerText2;
     // public TextMeshProUGUI timerText3;
     public List<TextMeshProUGUI> timerTexts;
+    public float initialTime = 360f;
     private float remainingTime;
+    private HueLights lights;
+
 
     void Start()
     {
+        lights = GameObject.FindGameObjectWithTag("Manager").GetComponent<HueLights>();
         timerTexts = new List<TextMeshProUGUI>();
 
         if (timerText2 == null) 
@@ -44,7 +48,7 @@ public class Timer : MonoBehaviour
             }
         }
 
-        remainingTime = 360f; // Set to 6 minutes in seconds
+        remainingTime = initialTime; // Set to 6 minutes in seconds
         StartCoroutine(UpdateTimer());
     }
     private void Update()
@@ -93,6 +97,8 @@ public class Timer : MonoBehaviour
     private void TimerFinished()
     {
         Debug.Log("Timer finished!");
+        if (lights != null)
+            lights.PlayerWin();
         SceneManager.LoadScene("EndScene");
     }
 }

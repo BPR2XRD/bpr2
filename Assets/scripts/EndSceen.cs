@@ -36,7 +36,7 @@ public class EndSceen : MonoBehaviour
         Source.Stop();
         Source.PlayOneShot(WinningClip);
 
-        text.text = "Wow, Ghost Hunter won. Congratulations!!!";
+        text.text = "The Hunter survived";
         playerText.SetText("You survived");
         image.GetComponent<Image> ().sprite = WinSprite;
         image2.GetComponent<Image> ().sprite = WinSprite;
@@ -46,7 +46,7 @@ public class EndSceen : MonoBehaviour
         Source.Stop();
         Source.PlayOneShot(LoosingClip);
 
-        text.text = "O_O, Ghost Hunter was defeated";
+        text.text = "The Hunter died";
         playerText.SetText("You Died");
         image.GetComponent<Image> ().sprite = LoseSprite;
         image2.GetComponent<Image> ().sprite = LoseSprite;
