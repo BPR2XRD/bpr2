@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class EndMenu : MonoBehaviour
 {
     public void PlayAgain(){
+        Debug.Log("button pressed");
         SceneManager.LoadScene("Graveyard");
     }
 
