@@ -37,7 +37,7 @@ public class EndSceen : MonoBehaviour
         Source.PlayOneShot(WinningClip);
 
         text.text = "The Hunter survived";
-        playerText.SetText("You survived");
+        playerText.SetText("You Survived");
         image.GetComponent<Image> ().sprite = WinSprite;
         image2.GetComponent<Image> ().sprite = WinSprite;
     }

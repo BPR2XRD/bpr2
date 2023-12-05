@@ -99,7 +99,7 @@ public class HueLights : MonoBehaviour
         command.TurnOn();
         command.Brightness = 254;
         command.Effect = Effect.None;
-        command.TransitionTime = new TimeSpan(hours: 0, minutes: 0, seconds: 2);
+        command.TransitionTime = new TimeSpan(hours: 0, minutes: 0, seconds: 1);
      
         await Task.Delay(1500); //waiting until lights are turned off
 

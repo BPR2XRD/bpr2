@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timerText2;
     // public TextMeshProUGUI timerText3;
     public List<TextMeshProUGUI> timerTexts;
-    public float initialTime = 360f;
+    public float initialTime = 360f; // Set to 6 minutes in seconds
     private float remainingTime;
     private HueLights lights;
 
@@ -48,7 +48,7 @@ public class Timer : MonoBehaviour
             }
         }
 
-        remainingTime = initialTime; // Set to 6 minutes in seconds
+        remainingTime = initialTime; 
         StartCoroutine(UpdateTimer());
     }
     private void Update()
