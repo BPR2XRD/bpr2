@@ -35,7 +35,7 @@ public class ZombieBotController : MonoBehaviour
     private Rigidbody[] ragdollRigidbodies;
     private CharacterController characterController;
 
-    public float maxHealth = 5f;
+    public float maxHealth = 3f;
     public float controlledMovementSpeed = 2.0f;
     private float currentHealth;
     public bool isDead = false;

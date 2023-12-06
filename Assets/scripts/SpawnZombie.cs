@@ -17,7 +17,7 @@ public class SpawnZombie : MonoBehaviour
     {
         while (true) // Infinite loop
         {
-            float sec = UnityEngine.Random.Range(5, 10);
+            float sec = UnityEngine.Random.Range(6, 12);
             // Wait for random number of seconds
             yield return new WaitForSeconds(sec);
 
