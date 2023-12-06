@@ -382,10 +382,10 @@ public class ZombieBotController : MonoBehaviour
     private void RagdollBehaviour()
     {
         Vector3 hitPoint = new Vector3(0, 0, 0); // Default hit point
-        Vector3 force = new Vector3(0, 3, 0); // Default force
+        Vector3 force = new Vector3(0, 0.3f, 0); // Default force
 
         Rigidbody hitRigidbody = ragdollRigidbodies.OrderBy(rigidbody => Vector3.Distance(rigidbody.position, hitPoint)).First();
-        hitRigidbody.AddForceAtPosition(force, hitPoint, ForceMode.Impulse);
+        hitRigidbody.AddForceAtPosition(force, hitPoint, ForceMode.Force);
 
         if (TryGetComponent(out Disolve disolve))
         {

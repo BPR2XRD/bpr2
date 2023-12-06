@@ -33,6 +33,6 @@ public class TopViewFollowPlayer : MonoBehaviour
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothFactor);
 
         // Update the position of the camera to follow the player.
-        transform.position = desiredPosition;
+        transform.position = smoothedPosition;
     }
 }

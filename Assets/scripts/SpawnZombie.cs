@@ -17,8 +17,9 @@ public class SpawnZombie : MonoBehaviour
     {
         while (true) // Infinite loop
         {
-            // Wait for 8 seconds
-            yield return new WaitForSeconds(8);
+            float sec = UnityEngine.Random.Range(5, 10);
+            // Wait for random number of seconds
+            yield return new WaitForSeconds(sec);
 
             // Code to execute after the delay
             SpawnZombiesIfNecessary();
