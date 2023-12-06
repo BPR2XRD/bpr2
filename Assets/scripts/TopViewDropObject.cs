@@ -47,7 +47,7 @@ public class TopViewDropObject : MonoBehaviour
     void Update()
     {
         if (Mouse.current.leftButton.wasPressedThisFrame &&
-            !IsPointerOverUIObject())
+            !EventSystem.current.IsPointerOverGameObject())
         {
             Vector2 mousePosition = Mouse.current.position.ReadValue();
             Ray ray = topViewCamera.ScreenPointToRay(mousePosition);
@@ -65,9 +65,9 @@ public class TopViewDropObject : MonoBehaviour
                     else if (!isCoffinSelected && !isCooldownBarricade) //execute code for barricade
                     {
                         isCooldownBarricade = true;
-                            barricadeImage.fillAmount = 1;
+                        barricadeImage.fillAmount = 1;
                         var tmpBar =    Instantiate(barricadePrefab, clickPoint, Quaternion.identity);
-                    Destroy(tmpBar, 20f);
+                        Destroy(tmpBar, 20f);
                     }
               
             }
@@ -107,14 +107,34 @@ public class TopViewDropObject : MonoBehaviour
         }
     }
 
-    private bool IsPointerOverUIObject()
-    {
-        PointerEventData eventData = new(eventSystem)
-        {
-            position = Mouse.current.position.value
-        };
-        List<RaycastResult> results = new();
-        eventSystem.RaycastAll(eventData, results);
-        return results.Count > 0;
-    }
+    //private bool IsPointerOverUIObject()
+    //{
+    //    PointerEventData eventData = new(eventSystem)
+    //    {
+    //        position = Mouse.current.position.value
+    //    };
+    //    List<RaycastResult> results = new();
+    //    eventSystem.RaycastAll(eventData, results);
+    //    return results.Count > 0;
+    //}
+
+    //public bool IsPointerOverUIObject()
+    //{
+    //    PointerEventData eventDataCurrentPosition = new(EventSystem.current)
+    //    {
+    //        position = Mouse.current.position.value
+    //    };
+    //    List<RaycastResult> results = new();
+    //    EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
+    //    for (int i = 0; i < results.Count; i++)
+    //    {
+    //        if (results[i].gameObject.layer == 5) //5 = UI layer
+    //        {
+    //            return true;
+    //        }
+    //    }
+
+    //    return false;
+    //}
 }
