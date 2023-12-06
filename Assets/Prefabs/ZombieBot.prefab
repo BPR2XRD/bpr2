@@ -1520,7 +1520,7 @@ MonoBehaviour:
   runningOuterProximity: 6
   xzAttackProximity: 1.32
   yAttackProximity: 1.5
-  maxHealth: 5
+  maxHealth: 3
   controlledMovementSpeed: 2
   isDead: 0
   controlledMovementVector: {x: 0, y: 0}
