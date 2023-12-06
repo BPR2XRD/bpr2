@@ -391,5 +391,10 @@ public class ZombieBotController : MonoBehaviour
         {
             disolve.enabled = true;
         }
+        if (TryGetComponent(out Outline outline))
+        {
+            outline.enabled = false;
+        }
+        Destroy(gameObject, 3.1f); 
     }
 }

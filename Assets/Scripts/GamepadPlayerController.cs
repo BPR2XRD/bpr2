@@ -221,7 +221,6 @@ public class GamepadPlayerController : MonoBehaviour
             selectedZombieBotController = toBeSelectedZombieBot.GetComponent<ZombieBotController>();       
             var outline = selectedZombieBot.GetComponent<Outline>();
             outline.OutlineMode = Outline.Mode.OutlineAll;
-            Debug.Log(playerInput.playerIndex + "Giovani");
             outline.OutlineColor = playerInput.playerIndex switch
                  {
                      0 => Color.red,
@@ -230,7 +229,7 @@ public class GamepadPlayerController : MonoBehaviour
                      3 => Color.blue,
                      _ => Color.magenta,
                  };
-            outline.OutlineWidth = 9f;
+            outline.OutlineWidth = 5f;
             outline.enabled = true;
         }
         else if (aliveZombieBotGameObjects.Length == 1)
