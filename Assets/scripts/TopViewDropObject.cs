@@ -46,32 +46,29 @@ public class TopViewDropObject : MonoBehaviour
         if (Mouse.current.leftButton.wasPressedThisFrame &&
             !EventSystem.current.IsPointerOverGameObject())
         {
-            // Check if the number of zombies is less than 40
-            if (ObjectSpawner.zombiesCurrentlyOnMap < 40)
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+            Ray ray = topViewCamera.ScreenPointToRay(mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                Vector2 mousePosition = Mouse.current.position.ReadValue();
-                Ray ray = topViewCamera.ScreenPointToRay(mousePosition);
-                if (Physics.Raycast(ray, out RaycastHit hit))
-                {
-                        Vector3 clickPoint = hit.point;
-                        clickPoint.y += spawnHeightOffset;
-                        if (isCoffinSelected && !isCooldownCoffin)
-                        {
-                         isCooldownCoffin = true;
-                            coffinImage.fillAmount = 1;
-                            GameObject droppedCoffin = Instantiate(coffinPrefab, clickPoint, Quaternion.identity);
-                            droppedCoffin.GetComponent<CoffinController>().OnCoffinDropped(zombiePrefab);
-                        }
-                        else if (!isCoffinSelected && !isCooldownBarricade) //execute code for barricade
-                        {
-                            isCooldownBarricade = true;
-                                barricadeImage.fillAmount = 1;
-                            var tmpBar =    Instantiate(barricadePrefab, clickPoint, Quaternion.identity);
-                        Destroy(tmpBar, 20f);
-                        }
+                    Vector3 clickPoint = hit.point;
+                    clickPoint.y += spawnHeightOffset;
+                    if (isCoffinSelected && !isCooldownCoffin)
+                    {
+                        isCooldownCoffin = true;
+                        coffinImage.fillAmount = 1;
+                        GameObject droppedCoffin = Instantiate(coffinPrefab, clickPoint, Quaternion.identity);
+                        droppedCoffin.GetComponent<CoffinController>().OnCoffinDropped(zombiePrefab);
+                    }
+                    else if (!isCoffinSelected && !isCooldownBarricade) //execute code for barricade
+                    {
+                        isCooldownBarricade = true;
+                            barricadeImage.fillAmount = 1;
+                        var tmpBar =    Instantiate(barricadePrefab, clickPoint, Quaternion.identity);
+                    Destroy(tmpBar, 20f);
+                    }
               
-                }
             }
+            
         }
         SetImageCooldown(ref coffinImage, ref cooldownCoffin, ref isCooldownCoffin);
         SetImageCooldown(ref barricadeImage, ref cooldownBarricade, ref isCooldownBarricade);

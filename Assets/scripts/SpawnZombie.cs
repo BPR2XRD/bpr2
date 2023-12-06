@@ -3,18 +3,10 @@ using System.Linq;
 using System.Collections;
 using UnityEngine;
 
-public class ObjectSpawner : MonoBehaviour
+public class SpawnZombie : MonoBehaviour
 {
     public GameObject objectToSpawn;
     public Transform[] spawnPoints; // Array of spawn points
-
-    private float initialSpawnInterval = 15f; // Initial interval
-    private float minSpawnInterval = 5f; // Minimum interval
-    private float intervalReduction = 1f; // Interval reduction amount
-    private float reductionFrequency = 20f; // Time in seconds to reduce interval
-    private float waveDuration = 300f; // Duration of each wave (5 minutes)
-    private float breakDuration = 15f; // Duration of break between waves
-    public static int zombiesCurrentlyOnMap = 0; // Counter for zombies on the map
 
     void Start()
     {
@@ -25,8 +17,8 @@ public class ObjectSpawner : MonoBehaviour
     {
         while (true) // Infinite loop
         {
-            // Wait for 10 seconds
-            yield return new WaitForSeconds(5);
+            // Wait for 8 seconds
+            yield return new WaitForSeconds(8);
 
             // Code to execute after the delay
             SpawnZombiesIfNecessary();
@@ -44,7 +36,7 @@ public class ObjectSpawner : MonoBehaviour
             })
             .ToArray();
 
-        if (aliveZombieBotGameObjects.Length < 40)
+        if (aliveZombieBotGameObjects.Length < 25)
         {
             foreach (Transform spawnPoint in spawnPoints)
             {
@@ -56,6 +48,5 @@ public class ObjectSpawner : MonoBehaviour
     private void InstantiateZombie(Transform spawnPoint)
     {
         Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
-        zombiesCurrentlyOnMap++;
     }
 }
