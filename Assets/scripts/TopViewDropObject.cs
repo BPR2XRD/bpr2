@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -20,9 +21,11 @@ public class TopViewDropObject : MonoBehaviour
     public Image barricadeImage;
     public float cooldownBarricade = 5;
     bool isCooldownBarricade = false;
+    private EventSystem eventSystem;
 
     void Start()
     {
+        eventSystem = EventSystem.current;
         topViewCamera = GetComponent<Camera>();
         if (topViewCamera == null)
         {
@@ -44,7 +47,7 @@ public class TopViewDropObject : MonoBehaviour
     void Update()
     {
         if (Mouse.current.leftButton.wasPressedThisFrame &&
-            !EventSystem.current.IsPointerOverGameObject())
+            !IsPointerOverUIObject())
         {
             Vector2 mousePosition = Mouse.current.position.ReadValue();
             Ray ray = topViewCamera.ScreenPointToRay(mousePosition);
@@ -102,5 +105,16 @@ public class TopViewDropObject : MonoBehaviour
                 isCoffinSelected = false;
             }
         }
+    }
+
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventData = new(eventSystem)
+        {
+            position = Mouse.current.position.value
+        };
+        List<RaycastResult> results = new();
+        eventSystem.RaycastAll(eventData, results);
+        return results.Count > 0;
     }
 }
