@@ -25,7 +25,7 @@ public class TopViewDropObject : MonoBehaviour
     public float cooldownBarricade = 5;
     bool isCooldownBarricade = false;
     private EventSystem eventSystem;
-
+    
     void Start()
     {
         // Initialize the event system and camera
