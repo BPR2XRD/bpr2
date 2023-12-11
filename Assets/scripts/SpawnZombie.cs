@@ -13,7 +13,7 @@ public class SpawnZombie : MonoBehaviour
         StartCoroutine(DelayedExecution());
     }
 
-    IEnumerator DelayedExecution()
+    internal IEnumerator DelayedExecution()
     {
         while (true) // Infinite loop
         {
@@ -26,7 +26,7 @@ public class SpawnZombie : MonoBehaviour
         }
     }
 
-    void SpawnZombiesIfNecessary()
+    internal void SpawnZombiesIfNecessary()
     {
         GameObject[] aliveZombieBotGameObjects = GameObject
             .FindGameObjectsWithTag("ZombieBot")
