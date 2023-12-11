@@ -5,7 +5,6 @@ using Microlight.MicroBar;
 using System;
 using UnityEngine.SceneManagement;
 using Q42.HueApi;
-using UnityEditor.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -74,12 +73,6 @@ public class PlayerHealth : MonoBehaviour
         if (lights != null)
             lights.PlayerDead();
 
-#if UNITY_EDITOR
-        // In the editor, use EditorSceneManager to load scenes during edit mode
-        EditorSceneManager.OpenScene("Assets/Scenes/EndScene.unity", OpenSceneMode.Single);
-#else
-        // In play mode, use SceneManager to load scenes
         SceneManager.LoadScene("EndScene");
-#endif
     }
 }
