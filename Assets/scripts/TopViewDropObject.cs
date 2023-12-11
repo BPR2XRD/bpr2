@@ -12,7 +12,7 @@ public class TopViewDropObject : MonoBehaviour
     public GameObject zombiePrefab;
     public GameObject barricadePrefab;
     public ToggleGroup toggleGroup; // UI toggle group for selecting objects
-    private bool isCoffinSelected = true; // Tracks if coffin is selected
+    internal bool isCoffinSelected = true; // Tracks if coffin is selected
     
     // Offset for spawning objects above the ground
     public float spawnHeightOffset = 7f;
@@ -86,7 +86,7 @@ public class TopViewDropObject : MonoBehaviour
         SetImageCooldown(ref barricadeImage, ref cooldownBarricade, ref isCooldownBarricade);
     }
 
-    private void SetImageCooldown(ref Image image, ref float cooldown, ref bool isCooldown)
+    internal void SetImageCooldown(ref Image image, ref float cooldown, ref bool isCooldown)
     {
         // Reduce the fill amount over time and reset cooldown if it reaches 0
         if (isCooldown)
@@ -101,7 +101,7 @@ public class TopViewDropObject : MonoBehaviour
         }
     }
 
-    private void OnToggleValueChanged(Toggle changedToggle)
+    internal void OnToggleValueChanged(Toggle changedToggle)
     {
         // Change the selected object based on the toggle state
         if (changedToggle.isOn)

@@ -5,6 +5,7 @@ using Microlight.MicroBar;
 using System;
 using UnityEngine.SceneManagement;
 using Q42.HueApi;
+using UnityEditor.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -12,9 +13,9 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public bool isDead = false;
     public FadeScreen fadeScreen;
-    private MicroBar healthBar;
-    private AudioSource audioSource;
-    private HueLights lights;
+    internal MicroBar healthBar;
+    internal AudioSource audioSource;
+    internal HueLights lights;
 
     void Start()
     {    
@@ -64,7 +65,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void Die()
+    internal void Die()
     {
         isDead = true;
         GameData.isPlayerDead = isDead;
@@ -72,6 +73,13 @@ public class PlayerHealth : MonoBehaviour
             fadeScreen.FadeOut();
         if (lights != null)
             lights.PlayerDead();
-        SceneManager.LoadSceneAsync("EndScene");
+
+#if UNITY_EDITOR
+        // In the editor, use EditorSceneManager to load scenes during edit mode
+        EditorSceneManager.OpenScene("Assets/Scenes/EndScene.unity", OpenSceneMode.Single);
+#else
+        // In play mode, use SceneManager to load scenes
+        SceneManager.LoadScene("EndScene");
+#endif
     }
 }

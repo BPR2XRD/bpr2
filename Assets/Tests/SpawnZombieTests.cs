@@ -16,13 +16,14 @@ public class SpawnZombieTests
         spawnZombieScript.objectToSpawn = new GameObject(); // Mock a prefab
         spawnZombieScript.objectToSpawn.tag = "ZombieBot";
         var spawnPointObject = new GameObject();
-        spawnZombieScript.spawnPoints = new Transform[] { spawnPointObject.transform }; // Mock a spawn point
+        spawnZombieScript.spawnPoints = new Transform[1];
+        spawnZombieScript.spawnPoints[0] = spawnPointObject.transform;// Mock a spawn point
 
         // Act
         spawnZombieScript.SpawnZombiesIfNecessary();
 
         // Assert
-        Assert.AreEqual(1, GameObject.FindGameObjectsWithTag("ZombieBot").Length, "Should spawn zombies if necessary");
+        Assert.AreEqual(2, GameObject.FindGameObjectsWithTag("ZombieBot").Length, "Should spawn zombies if necessary");
     }
 
     [Test]

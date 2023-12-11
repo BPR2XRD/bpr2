@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class GamepadPlayerManagerController : MonoBehaviour
 {
-    private void Start()
+    internal void Start()
     {
         // Find all pre-connected gamepads and spawn a gamepad player for each one
         var gamepads = Gamepad.all;
@@ -15,12 +15,12 @@ public class GamepadPlayerManagerController : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    internal void OnEnable()
     {
         InputSystem.onDeviceChange += OnDeviceChanged;
     }
 
-    private void OnDisable()
+    internal void OnDisable()
     {
         InputSystem.onDeviceChange -= OnDeviceChanged;
     }
@@ -35,7 +35,7 @@ public class GamepadPlayerManagerController : MonoBehaviour
         // Debug.Log("Disconnected " + player.playerIndex);
     }
 
-    private void OnDeviceChanged(InputDevice device, InputDeviceChange change)
+    internal void OnDeviceChanged(InputDevice device, InputDeviceChange change)
     {
         // If the newly added device is not a gamepad exit early
         if (!(device is Gamepad))
@@ -54,18 +54,18 @@ public class GamepadPlayerManagerController : MonoBehaviour
         }
     }
 
-    private void TryJoinPlayer(InputDevice device)
+    internal void TryJoinPlayer(InputDevice device)
     {
         if (!HasGamepadAlreadyJoined(device))
             PlayerInputManager.instance.JoinPlayer(-1, -1, null, device);
     }
 
-    private bool HasGamepadAlreadyJoined(InputDevice device)
+    internal bool HasGamepadAlreadyJoined(InputDevice device)
     {
         return PlayerInput.all.Any(playerInput => playerInput.devices.Contains(device));
     }
 
-    private void TryRemovePlayer(InputDevice device)
+    internal void TryRemovePlayer(InputDevice device)
     {
         var playerInput = PlayerInput.all.FirstOrDefault(playerInput => playerInput.devices.Contains(device));
         if (playerInput != null)
